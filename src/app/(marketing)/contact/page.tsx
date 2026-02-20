@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import MarketingHeader from "@/components/layout/MarketingHeader";
 
 export default function ContactPage() {
-  const [status, setStatus] = useState<"idle"|"sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sent">("idle");
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -12,8 +13,10 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-16">
-      <section className="max-w-xl mx-auto">
+    <main className="min-h-screen bg-black text-white">
+      <MarketingHeader currentPath="/contact" />
+
+      <section className="max-w-xl mx-auto px-6 py-16">
         <h1 className="text-3xl font-bold mb-2">Contáctenos</h1>
         <p className="text-zinc-300 mb-8">
           Escríbenos y te respondemos pronto.

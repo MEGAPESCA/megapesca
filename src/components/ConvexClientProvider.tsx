@@ -5,11 +5,9 @@ import { ConvexProviderWithClerk } from "convex/react-clerk";
 import { ConvexReactClient } from "convex/react";
 import { useAuth } from "@clerk/nextjs";
 
-if (!process.env.NEXT_PUBLIC_CONVEX_URL) {
-  throw new Error("Falta NEXT_PUBLIC_CONVEX_URL en tu .env");
-}
-
-const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL);
+const convex = new ConvexReactClient(
+  process.env.NEXT_PUBLIC_CONVEX_URL || "https://placeholder.convex.cloud"
+);
 
 export default function ConvexClientProvider({ children }: { children: ReactNode }) {
   const auth = useAuth();

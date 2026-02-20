@@ -12,10 +12,9 @@ export async function getCurrentUser(ctx: QueryCtx | MutationCtx) {
   const email = identity.email?.toLowerCase();
   if (!email) return { identity, user: null };
 
-  // Tipamos el builder como any para evitar el "implicit any"
   const user = await ctx.db
     .query("users")
-    .withIndex("by_email", (q: any) => q.eq("email", email))
+    .withIndex("by_email", (q) => q.eq("email", email))
     .unique();
 
   return { identity, user };
@@ -36,7 +35,7 @@ export async function assertOwner<T extends { ownerId?: string; userId?: string 
   record: T
 ) {
   const user = await assertAuthed(ctx);
-  const owner = (record as any).ownerId ?? (record as any).userId;
+  const owner = record.ownerId ?? record.userId;
   if (!owner || owner !== user._id) {
     throw new Error("FORBIDDEN_NOT_OWNER");
   }

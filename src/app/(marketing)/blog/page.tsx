@@ -1,7 +1,13 @@
+"use client";
+
+import MarketingHeader from "@/components/layout/MarketingHeader";
+
 export default function BlogPage() {
   return (
-    <main className="min-h-screen bg-black text-white px-6 py-16">
-      <section className="max-w-4xl mx-auto">
+    <main className="min-h-screen bg-black text-white">
+      <MarketingHeader currentPath="/blog" />
+
+      <section className="max-w-4xl mx-auto px-6 py-16">
         <h1 className="text-3xl font-bold mb-2">Blog</h1>
         <p className="text-zinc-300 mb-8">
           Noticias, técnicas, comparativas de equipos y coberturas de torneos.

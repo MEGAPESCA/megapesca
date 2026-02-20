@@ -10,7 +10,7 @@ export const listMine = query({
     let me =
       await ctx.db
         .query("users")
-        .withIndex("by_clerkId", (q: any) => q.eq("clerkId", identity.subject))
+        .withIndex("by_clerkId", (q) => q.eq("clerkId", identity.subject))
         .unique();
 
     // 2) fallback por email (si existe)
@@ -19,7 +19,7 @@ export const listMine = query({
       if (emailLower) {
         me = await ctx.db
           .query("users")
-          .withIndex("by_email", (q: any) => q.eq("email", emailLower))
+          .withIndex("by_email", (q) => q.eq("email", emailLower))
           .unique();
       }
     }

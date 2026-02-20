@@ -44,6 +44,8 @@
 }
 
 :root {
+  --font-geist-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -120,6 +122,18 @@
     @apply bg-background text-foreground;
   }
 }
+
+@media (pointer: fine) {
+  .custom-cursor-enabled,
+  .custom-cursor-enabled * {
+    cursor: none !important;
+  }
+}
+
+.custom-cursor img {
+  filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(255, 255, 255, 0.95))
+    drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
+}
 /* === Animaciones del logo === */
 @keyframes logoIntro {
   from { opacity: 0; transform: scale(0.92); }
@@ -133,3 +147,12 @@
 
 .logo-anim-intro { animation: logoIntro 900ms ease-out 0.15s both; }
 .logo-anim-float { animation: floatSlow 6s ease-in-out 1s infinite; }
+
+@keyframes brandMarquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.brand-marquee-track {
+  animation: brandMarquee 26s linear infinite;
+}

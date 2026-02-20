@@ -3,11 +3,17 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import HomeCarousel from "@/components/home/HomeCarousel";
+import DestinationsSection from "@/components/home/DestinationsSection";
+import MarketingHeader from "@/components/layout/MarketingHeader";
+import ShopPromoSection from "@/components/home/ShopPromoSection";
+import AboutMegapescaSection from "@/components/home/AboutMegapescaSection";
+
+const HOME_SLIDES = ["/launch/01.jpg", "/launch/02.jpg"];
 
 export default function Home() {
   const router = useRouter();
-  const [ready, setReady] = useState(false);             
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
     // Permitir anular redirección con ?noredirect=1
@@ -43,79 +49,33 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-black text-white flex flex-col">
-      {/* NAV provisional */}
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur">
-        <div className="mx-auto w-full max-w-6xl px-4 py-3 flex items-center justify-between">
-          <Link href="/" className="text-lg font-bold tracking-tight">
-            Megapesca
-          </Link>
+      <MarketingHeader currentPath="/" />
 
-          <nav className="hidden sm:flex items-center gap-5 text-sm text-zinc-300">
-            <Link href="/home" className="hover:text-white transition">Home</Link>
-            <Link href="/shop" className="hover:text-white transition">Tienda</Link>
-            <Link href="/trips" className="hover:text-white transition">Viajes</Link>
-            <Link href="/blog" className="hover:text-white transition">Blog</Link>
-            <Link href="/contact" className="hover:text-white transition">Contáctenos</Link>
-            <Link href="/first-opportunity" className="hover:text-white transition">First-Opportunity</Link>
-          </nav>
+      <HomeCarousel slides={HOME_SLIDES} />
 
-          <div className="flex items-center gap-2">
-            <SignedOut>
-              <Link
-                href="/sign-in"
-                className="rounded-md border border-white/20 px-3 py-1.5 text-sm hover:bg-white/10 transition"
-              >
-                Ingresar
-              </Link>
-              <Link
-                href="/sign-up"
-                className="rounded-md bg-[#d6a354] text-black font-semibold px-3 py-1.5 text-sm hover:brightness-110 transition"
-              >
-                Registrarse
-              </Link>
-            </SignedOut>
-            <SignedIn>
-              <Link
-                href="/dashboard"
-                className="rounded-md border border-white/20 px-3 py-1.5 text-sm hover:bg-white/10 transition"
-              >
-                Mi panel
-              </Link>
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
-          </div>
-        </div>
-      </header>
+      <DestinationsSection />
 
-      {/* HERO simple para dev */}
-      <section className="flex-1 flex flex-col items-center justify-center gap-4 text-center px-6">
-        <h1 className="text-3xl sm:text-4xl font-bold">Megapesca — Home (Dev)</h1>
-        <p className="text-zinc-300 max-w-xl">
-          Menú provisional y botones de autenticación. La redirección a la landing ocurre solo la primera vez.
-        </p>
-
-        <div className="flex items-center gap-3">
+      <section className="pb-14 sm:pb-16">
+        <div className="mx-auto w-full max-w-6xl px-4 flex flex-col items-center gap-4">
+          <p className="text-xs uppercase tracking-[0.24em] text-zinc-400">
+            Descubre nuevas experiencias
+          </p>
           <Link
-            href="/first-opportunity"
-            className="rounded-md bg-[#d6a354] text-black font-semibold px-5 py-2 hover:brightness-110 transition"
+            href="/trips"
+            className="group inline-flex items-center gap-3 rounded-full border border-[#d6a354]/50 bg-gradient-to-r from-[#f1c981] via-[#d6a354] to-[#b88739] px-7 py-3 text-sm font-semibold tracking-wide text-black shadow-[0_10px_30px_rgba(214,163,84,0.35)] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:from-[#f6d798] hover:via-[#e1b46a] hover:to-[#c89242] hover:shadow-[0_20px_42px_rgba(214,163,84,0.55)]"
           >
-            Ver “first-opportunity”
+            Más destinos populares
+            <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-black/15 text-base transition-transform duration-300 group-hover:translate-x-1 group-hover:rotate-90">
+              +
+            </span>
           </Link>
-          <button
-            onClick={() => localStorage.removeItem("mp_redirected_once")}
-            className="text-xs text-zinc-400 underline underline-offset-4"
-            title="Borrar marca de redirección"
-          >
-            Reset redirección (debug)
-          </button>
         </div>
-
-        <p className="text-xs text-zinc-500">
-          Tip: añade <code>?noredirect=1</code> a la URL para bloquear la redirección temporalmente.
-        </p>
       </section>
 
-      {/* FOOTER simple */}
+      <ShopPromoSection />
+
+      <AboutMegapescaSection />
+
       <footer className="border-t border-white/10 text-center text-xs text-zinc-400 py-4">
         © {new Date().getFullYear()} Megapesca. Todos los derechos reservados.
       </footer>

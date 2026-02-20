@@ -6,7 +6,26 @@ import { useConvexAuth, useMutation, useQuery } from "convex/react";
 import { useUser } from "@clerk/nextjs";
 import { api } from "@/../convex/_generated/api";
 
+const hasClerk = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
+
 export default function DashboardPage() {
+  if (!hasClerk) {
+    return (
+      <main className="min-h-screen flex flex-col items-center justify-center bg-black text-white">
+        <div className="text-center space-y-3">
+          <h1 className="text-2xl font-bold tracking-wide">Configuración pendiente</h1>
+          <p className="text-sm text-zinc-400">
+            El dashboard requiere Clerk configurado en variables de entorno.
+          </p>
+        </div>
+      </main>
+    );
+  }
+
+  return <DashboardPageWithAuth />;
+}
+
+function DashboardPageWithAuth() {
   const router = useRouter();
   const { isAuthenticated, isLoading } = useConvexAuth();
   const { user, isLoaded } = useUser();

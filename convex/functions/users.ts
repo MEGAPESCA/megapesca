@@ -1,4 +1,5 @@
 import { query, mutation } from "../_generated/server";
+import type { MutationCtx, QueryCtx } from "../_generated/server";
 import { v } from "convex/values";
 
 // ✅ Ajusta estas listas según tu proyecto
@@ -6,6 +7,38 @@ const ADMIN_EMAILS = ["info@megapesca.co"];
 // 👉 Consigue el Clerk User ID de tu admin (Clerk Dashboard → Users → el user → "User ID", ej: "user_2aBc..."):
 const ADMIN_SUBJECTS = ["user_34L7A0Mtysh9b70mD1Yy2JYEXq1"
 ];
+
+type Ctx = QueryCtx | MutationCtx;
+
+async function findUserFromIdentity(
+  ctx: Ctx,
+  subject: string,
+  emailLower?: string
+) {
+  const byClerk = await ctx.db
+    .query("users")
+    .withIndex("by_clerkId", (q) => q.eq("clerkId", subject))
+    .unique();
+
+  if (byClerk) return byClerk;
+  if (!emailLower) return null;
+
+  return await ctx.db
+    .query("users")
+    .withIndex("by_email", (q) => q.eq("email", emailLower))
+    .unique();
+}
+
+async function requireAdmin(ctx: Ctx) {
+  const identity = await ctx.auth.getUserIdentity();
+  if (!identity) throw new Error("UNAUTHORIZED");
+
+  const emailLower = identity.email?.toLowerCase();
+  const me = await findUserFromIdentity(ctx, identity.subject, emailLower);
+
+  if (!me || me.role !== "admin") throw new Error("FORBIDDEN");
+  return { identity, me };
+}
 
 /** Utilidad: decide si debe ser admin por email o por subject */
 function shouldBeAdmin(emailLower: string | undefined, clerkId: string) {
@@ -18,10 +51,11 @@ function shouldBeAdmin(emailLower: string | undefined, clerkId: string) {
 export const getByEmail = query({
   args: { email: v.string() },
   handler: async (ctx, { email }) => {
+    await requireAdmin(ctx);
     const lower = email.toLowerCase();
     return await ctx.db
       .query("users")
-      .withIndex("by_email", (q: any) => q.eq("email", lower))
+      .withIndex("by_email", (q) => q.eq("email", lower))
       .unique();
   },
 });
@@ -35,17 +69,15 @@ export const upsert = mutation({
     role: v.union(v.literal("client"), v.literal("admin")),
   },
   handler: async (ctx, { email, name, image, role }) => {
+    await requireAdmin(ctx);
     const lower = email.toLowerCase();
     const existing = await ctx.db
       .query("users")
-      .withIndex("by_email", (q: any) => q.eq("email", lower))
+      .withIndex("by_email", (q) => q.eq("email", lower))
       .unique();
 
     if (!existing) {
-      const identity = await ctx.auth.getUserIdentity();
-      const clerkId = identity?.subject;
       const id = await ctx.db.insert("users", {
-        clerkId,
         email: lower,
         name,
         image,
@@ -74,7 +106,7 @@ export const whoami = query({
     // 1) por clerkId
     const byClerk = await ctx.db
       .query("users")
-      .withIndex("by_clerkId", (q: any) => q.eq("clerkId", identity.subject))
+      .withIndex("by_clerkId", (q) => q.eq("clerkId", identity.subject))
       .unique();
     if (byClerk) return byClerk;
 
@@ -84,7 +116,7 @@ export const whoami = query({
 
     const byEmail = await ctx.db
       .query("users")
-      .withIndex("by_email", (q: any) => q.eq("email", email))
+      .withIndex("by_email", (q) => q.eq("email", email))
       .unique();
 
     return byEmail ?? null;
@@ -108,14 +140,14 @@ export const ensureMe = mutation({
     // 1) ¿existe ya por clerkId?
     let user = await ctx.db
       .query("users")
-      .withIndex("by_clerkId", (q: any) => q.eq("clerkId", clerkId))
+      .withIndex("by_clerkId", (q) => q.eq("clerkId", clerkId))
       .unique();
 
     // 2) si no existe, intentar migrar por email
     if (!user && emailLower) {
       const oldByEmail = await ctx.db
         .query("users")
-        .withIndex("by_email", (q: any) => q.eq("email", emailLower))
+        .withIndex("by_email", (q) => q.eq("email", emailLower))
         .unique();
 
       if (oldByEmail) {
@@ -163,20 +195,12 @@ export const setRole = mutation({
     role: v.union(v.literal("client"), v.literal("admin")),
   },
   handler: async (ctx, { email, role }) => {
-    const requester = await ctx.auth.getUserIdentity();
-    if (!requester) throw new Error("UNAUTHORIZED");
-
-    const me = await ctx.db
-      .query("users")
-      .withIndex("by_clerkId", (q: any) => q.eq("clerkId", requester.subject))
-      .unique();
-
-    if (!me || me.role !== "admin") throw new Error("FORBIDDEN");
+    await requireAdmin(ctx);
 
     const lower = email.toLowerCase();
     const target = await ctx.db
       .query("users")
-      .withIndex("by_email", (q: any) => q.eq("email", lower))
+      .withIndex("by_email", (q) => q.eq("email", lower))
       .unique();
 
     if (!target) throw new Error("USER_NOT_FOUND");
