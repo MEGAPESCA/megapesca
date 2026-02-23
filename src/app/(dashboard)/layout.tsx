@@ -6,16 +6,14 @@ import { UserButton, SignedIn, SignedOut, useUser } from "@clerk/nextjs";
 import ConvexClientProvider from "@/components/ConvexClientProvider";
 import Link from "next/link";
 
-const hasClerk = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
-
 export default function DashboardLayout({ children }: { children: ReactNode }) {
-  if (!hasClerk) {
+  if (!process.env.NEXT_PUBLIC_CONVEX_URL) {
     return (
       <main className="min-h-screen bg-black text-white grid place-items-center p-6">
         <div className="max-w-lg text-center space-y-3">
           <h1 className="text-2xl font-semibold">Configuración pendiente</h1>
           <p className="text-sm text-zinc-400">
-            Falta configurar Clerk (`NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`) para usar el dashboard.
+            Falta configurar Convex (`NEXT_PUBLIC_CONVEX_URL`) para usar el dashboard.
           </p>
           <Link
             href="/"

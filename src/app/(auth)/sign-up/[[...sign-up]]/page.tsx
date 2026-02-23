@@ -10,8 +10,7 @@ export default function SignUpPage() {
           <SignUp
             routing="path"
             path="/sign-up"
-            // redirectUrl (DEPRECATED) -> quitar
-            afterSignUpUrl="/dashboard"   // ✅
+            fallbackRedirectUrl="/dashboard"
             signInUrl="/sign-in"
             appearance={{
               variables: { colorPrimary: "#d6a354" },

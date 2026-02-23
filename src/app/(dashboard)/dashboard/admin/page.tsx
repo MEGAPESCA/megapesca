@@ -5,19 +5,7 @@ import { useRouter } from "next/navigation";
 import { useConvexAuth, useMutation, useQuery } from "convex/react";
 import { api } from "@/../convex/_generated/api";
 
-const hasClerk = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
-
 export default function AdminDashboardPage() {
-  if (!hasClerk) {
-    return (
-      <main className="min-h-screen bg-black text-white grid place-items-center">
-        <p className="text-sm text-zinc-400">
-          El panel admin requiere Clerk configurado.
-        </p>
-      </main>
-    );
-  }
-
   return <AdminDashboardPageWithAuth />;
 }
 

@@ -10,8 +10,7 @@ export default function SignInPage() {
           <SignIn
             routing="path"
             path="/sign-in"
-            // redirectUrl (DEPRECATED) -> quitar
-            afterSignInUrl="/dashboard"   // ✅
+            fallbackRedirectUrl="/dashboard"
             appearance={{
               variables: { colorPrimary: "#d6a354" },
               layout: { socialButtonsVariant: "iconButton" },

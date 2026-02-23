@@ -20,7 +20,6 @@ type MarketingHeaderProps = {
 
 export default function MarketingHeader({ currentPath }: MarketingHeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const hasClerk = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
 
   return (
     <header className="sticky top-0 z-50 w-screen border-b border-[#d6a354]/20 bg-gradient-to-r from-black/85 via-black/80 to-black/85 backdrop-blur-xl">
@@ -72,42 +71,29 @@ export default function MarketingHeader({ currentPath }: MarketingHeaderProps) {
             <span className="block h-0.5 w-5 bg-white mt-1.5" />
           </button>
 
-          {!hasClerk && (
+          <SignedOut>
+            <Link
+              href="/sign-in"
+              className="border border-[#d6a354]/35 bg-white/5 px-4 py-2 text-sm text-zinc-100 hover:bg-white/10 transition-all duration-300"
+            >
+              Ingresar
+            </Link>
+            <Link
+              href="/sign-up"
+              className="bg-gradient-to-r from-[#f1c981] via-[#d6a354] to-[#b88739] text-black font-semibold px-4 py-2 text-sm shadow-[0_8px_24px_rgba(214,163,84,0.3)] hover:brightness-110 transition-all duration-300"
+            >
+              Registrarse
+            </Link>
+          </SignedOut>
+          <SignedIn>
             <Link
               href="/dashboard"
               className="border border-[#d6a354]/35 bg-white/5 px-4 py-2 text-sm text-zinc-100 hover:bg-white/10 transition-all duration-300"
             >
               Mi panel
             </Link>
-          )}
-
-          {hasClerk && (
-            <>
-              <SignedOut>
-                <Link
-                  href="/sign-in"
-                  className="border border-[#d6a354]/35 bg-white/5 px-4 py-2 text-sm text-zinc-100 hover:bg-white/10 transition-all duration-300"
-                >
-                  Ingresar
-                </Link>
-                <Link
-                  href="/sign-up"
-                  className="bg-gradient-to-r from-[#f1c981] via-[#d6a354] to-[#b88739] text-black font-semibold px-4 py-2 text-sm shadow-[0_8px_24px_rgba(214,163,84,0.3)] hover:brightness-110 transition-all duration-300"
-                >
-                  Registrarse
-                </Link>
-              </SignedOut>
-              <SignedIn>
-                <Link
-                  href="/dashboard"
-                  className="border border-[#d6a354]/35 bg-white/5 px-4 py-2 text-sm text-zinc-100 hover:bg-white/10 transition-all duration-300"
-                >
-                  Mi panel
-                </Link>
-                <UserButton afterSignOutUrl="/" />
-              </SignedIn>
-            </>
-          )}
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
         </div>
       </div>
 
