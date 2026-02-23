@@ -76,9 +76,7 @@ export default function Home() {
 
       <AboutMegapescaSection />
 
-      <footer className="border-t border-white/10 text-center text-xs text-zinc-400 py-4">
-        © {new Date().getFullYear()} Megapesca. Todos los derechos reservados.
-      </footer>
+      
     </main>
   );
 }

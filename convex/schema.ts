@@ -3,7 +3,6 @@ import { v } from "convex/values";
 
 export default defineSchema({
   users: defineTable({
-    // 🔁 MIGRACIÓN SUAVE: lo dejamos opcional temporalmente
     clerkId: v.optional(v.string()),
     email: v.optional(v.string()),
     name: v.optional(v.string()),
@@ -11,8 +10,6 @@ export default defineSchema({
     role: v.union(v.literal("client"), v.literal("admin")),
     createdAt: v.number(),
   })
-    // Usuarios con clerkId aparecerán en este índice;
-    // los antiguos sin clerkId simplemente no estarán indexados aquí.
     .index("by_clerkId", ["clerkId"])
     .index("by_email", ["email"]),
 
@@ -43,12 +40,14 @@ export default defineSchema({
   gear: defineTable({
     userId: v.id("users"),
     title: v.string(),
-    items: v.array(v.object({
-      kind: v.string(),
-      brand: v.optional(v.string()),
-      model: v.optional(v.string()),
-      notes: v.optional(v.string()),
-    })),
+    items: v.array(
+      v.object({
+        kind: v.string(),
+        brand: v.optional(v.string()),
+        model: v.optional(v.string()),
+        notes: v.optional(v.string()),
+      })
+    ),
     createdAt: v.number(),
     updatedAt: v.number(),
   }).index("by_user", ["userId"]),
@@ -62,5 +61,43 @@ export default defineSchema({
     updatedAt: v.number(),
   })
     .index("by_user", ["userId"])
+    .index("by_status", ["status"]),
+
+  // 🔥 NUEVO: VIAJES
+  trips: defineTable({
+    slug: v.string(),
+    title: v.string(),
+    region: v.string(),
+    priceCOP: v.number(),
+    priceUSD: v.number(),
+    duration: v.string(),
+    tagline: v.string(),
+    highlight: v.optional(v.string()),
+    description: v.string(),
+    features: v.array(v.string()),
+    images: v.array(v.string()),
+    stock: v.number(),
+    isActive: v.boolean(),
+    createdAt: v.number(),
+  })
+    .index("by_slug", ["slug"])
+    .index("by_isActive", ["isActive"]),
+
+  // 🔥 NUEVO: RESERVAS DE VIAJES
+  tripBookings: defineTable({
+    tripId: v.id("trips"),
+    userId: v.id("users"),
+    quantity: v.number(),
+    totalPaid: v.number(),
+    currency: v.string(),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("paid"),
+      v.literal("cancelled")
+    ),
+    createdAt: v.number(),
+  })
+    .index("by_user", ["userId"])
+    .index("by_trip", ["tripId"])
     .index("by_status", ["status"]),
 });
