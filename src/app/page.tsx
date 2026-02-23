@@ -8,6 +8,7 @@ import DestinationsSection from "@/components/home/DestinationsSection";
 import MarketingHeader from "@/components/layout/MarketingHeader";
 import ShopPromoSection from "@/components/home/ShopPromoSection";
 import AboutMegapescaSection from "@/components/home/AboutMegapescaSection";
+import WhatsAppFloatingButton from "@/components/common/WhatsAppFloatingButton";
 
 const HOME_SLIDES = ["/launch/01.jpg", "/launch/02.jpg"];
 
@@ -76,7 +77,7 @@ export default function Home() {
 
       <AboutMegapescaSection />
 
-      
+      <WhatsAppFloatingButton />
     </main>
   );
 }
