@@ -9,18 +9,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const clerkPublishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
-
-  const content = (
-    <html lang="es">
-      <body className="antialiased bg-black text-white">
-        {children}
-      </body>
-    </html>
-  );
-
   if (!clerkPublishableKey) {
-    return content;
+    throw new Error("Missing NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY");
   }
 
-  return <ClerkProvider publishableKey={clerkPublishableKey}>{content}</ClerkProvider>;
+  return (
+    <ClerkProvider publishableKey={clerkPublishableKey}>
+      <html lang="es">
+        <body className="antialiased bg-black text-white">
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
+  );
 }

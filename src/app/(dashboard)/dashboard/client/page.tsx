@@ -6,19 +6,7 @@ import { useConvexAuth, useQuery } from "convex/react";
 import { api } from "@/../convex/_generated/api";
 import type { Doc } from "@/../convex/_generated/dataModel";
 
-const hasClerk = Boolean(process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY);
-
 export default function ClientDashboardPage() {
-  if (!hasClerk) {
-    return (
-      <main className="min-h-screen bg-black text-white grid place-items-center">
-        <p className="text-sm text-zinc-400">
-          El panel cliente requiere Clerk configurado.
-        </p>
-      </main>
-    );
-  }
-
   return <ClientDashboardPageWithAuth />;
 }
 

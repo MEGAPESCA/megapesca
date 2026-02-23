@@ -2,11 +2,18 @@ import { query, mutation } from "../_generated/server";
 import type { MutationCtx, QueryCtx } from "../_generated/server";
 import { v } from "convex/values";
 
-// ✅ Ajusta estas listas según tu proyecto
-const ADMIN_EMAILS = ["info@megapesca.co"];
-// 👉 Consigue el Clerk User ID de tu admin (Clerk Dashboard → Users → el user → "User ID", ej: "user_2aBc..."):
-const ADMIN_SUBJECTS = ["user_34L7A0Mtysh9b70mD1Yy2JYEXq1"
-];
+function parseCsvEnv(value: string | undefined) {
+  if (!value) return [];
+  return value
+    .split(",")
+    .map((item) => item.trim())
+    .filter(Boolean);
+}
+
+const ADMIN_EMAILS = parseCsvEnv(process.env.ADMIN_EMAILS).map((email) =>
+  email.toLowerCase()
+);
+const ADMIN_SUBJECTS = parseCsvEnv(process.env.ADMIN_SUBJECTS);
 
 type Ctx = QueryCtx | MutationCtx;
 
