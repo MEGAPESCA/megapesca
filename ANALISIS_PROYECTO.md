@@ -15,7 +15,7 @@ El estado general del proyecto es **bueno** en compilación y linting, con arqui
 ### Frontend / SSR
 - Next.js App Router con grupos de rutas para segmentar áreas `(marketing)`, `(auth)`, `(dashboard)`.
 - Tailwind CSS (v4) + componentes UI estilo shadcn/Radix.
-- Home con redirección inicial controlada por `localStorage` hacia `/first-opportunity`.
+- Home principal como punto de entrada del sitio, sin landing intermedia.
 
 ### Auth / autorización
 - Clerk como proveedor de autenticación.

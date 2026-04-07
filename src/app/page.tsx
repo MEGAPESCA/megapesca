@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import AboutMegapescaSection from "@/components/home/AboutMegapescaSection";
@@ -14,36 +12,6 @@ import MarketingHeader from "@/components/layout/MarketingHeader";
 const HOME_SLIDES = ["/launch/01.jpg", "/launch/02.jpg"];
 
 export default function Home() {
-  const router = useRouter();
-  const [ready, setReady] = useState(false);
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const noRedirect = params.get("noredirect") === "1";
-    const already = localStorage.getItem("mp_redirected_once") === "1";
-
-    if (!noRedirect && !already) {
-      localStorage.setItem("mp_redirected_once", "1");
-      router.replace("/first-opportunity");
-      return;
-    }
-
-    setReady(true);
-  }, [router]);
-
-  if (!ready) {
-    return (
-      <main className="theme-page flex min-h-screen items-center justify-center">
-        <div className="flex flex-col items-center gap-3">
-          <p className="animate-pulse text-sm text-muted-foreground">Cargando Megapesca...</p>
-          <Link href="/first-opportunity" className="text-xs text-primary underline underline-offset-4">
-            Ir ahora
-          </Link>
-        </div>
-      </main>
-    );
-  }
-
   return (
     <main className="theme-page min-h-screen flex flex-col">
       <MarketingHeader currentPath="/" />

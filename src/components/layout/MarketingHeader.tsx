@@ -13,7 +13,6 @@ const NAV_LINKS = [
   { href: "/trips", label: "Viajes" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contactenos" },
-  { href: "/first-opportunity", label: "First-Opportunity" },
 ];
 
 type MarketingHeaderProps = {
