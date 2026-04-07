@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+
 import MarketingHeader from "@/components/layout/MarketingHeader";
 
 const BAHIA_IMAGES = [
@@ -16,79 +17,81 @@ export default function BahiaSolanoPage() {
   const [qty, setQty] = useState(1);
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="theme-page min-h-screen">
       <MarketingHeader currentPath="/trips" />
 
       <section className="mx-auto w-full max-w-7xl px-4 py-8 sm:py-10">
-        <div className="mb-6 text-sm text-zinc-500">
-          <Link href="/trips" className="hover:text-zinc-800 transition">Travel</Link>
+        <div className="mb-6 text-sm text-muted-foreground">
+          <Link href="/trips" className="transition hover:text-foreground">
+            Travel
+          </Link>
           <span className="mx-2">›</span>
-          <span className="text-zinc-800">Bahía Solano</span>
+          <span className="text-foreground">Bahia Solano</span>
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[120px_1fr_460px]">
-          <div className="order-2 lg:order-1 flex lg:flex-col gap-3">
+          <div className="order-2 flex gap-3 lg:order-1 lg:flex-col">
             {BAHIA_IMAGES.map((img, idx) => (
               <button
                 key={img}
                 type="button"
                 onClick={() => setActiveImage(idx)}
                 className={`relative h-24 w-24 shrink-0 overflow-hidden rounded-lg border transition ${
-                  activeImage === idx ? "border-[#d6a354]" : "border-zinc-200 hover:border-zinc-400"
+                  activeImage === idx ? "border-primary shadow-[0_10px_24px_rgba(214,163,84,0.25)]" : "border-border hover:border-primary/60"
                 }`}
               >
-                <Image src={img} alt={`Bahía Solano miniatura ${idx + 1}`} fill className="object-cover" />
+                <Image src={img} alt={`Bahia Solano miniatura ${idx + 1}`} fill className="object-cover" />
               </button>
             ))}
           </div>
 
-          <div className="order-1 lg:order-2 relative overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-lg">
+          <div className="theme-panel-soft order-1 relative overflow-hidden lg:order-2">
             <div className="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4]">
-              <Image src={BAHIA_IMAGES[activeImage]} alt="Bahía Solano" fill className="object-cover" />
+              <Image src={BAHIA_IMAGES[activeImage]} alt="Bahia Solano" fill className="object-cover" />
             </div>
           </div>
 
-          <article className="order-3 rounded-xl border border-zinc-200 bg-white p-6 shadow-lg">
-            <h1 className="text-3xl font-semibold tracking-wide">BAHÍA SOLANO</h1>
+          <article className="theme-panel order-3 p-6">
+            <h1 className="text-3xl font-semibold tracking-wide">BAHIA SOLANO</h1>
 
             <div className="mt-3 flex flex-wrap items-center gap-4 text-sm">
-              <span className="text-emerald-600 font-medium">In Stock</span>
-              <span className="text-zinc-600">Costa Pacífica</span>
-              <span className="text-amber-500">★★★★★</span>
-              <span className="text-zinc-500">8 reviews</span>
+              <span className="font-medium text-emerald-600 dark:text-emerald-300">Disponible</span>
+              <span className="text-muted-foreground">Costa Pacifica</span>
+              <span className="text-primary">★★★★★</span>
+              <span className="text-muted-foreground">8 reviews</span>
             </div>
 
-            <div className="mt-5 text-4xl font-semibold text-[#d94b4b] tracking-tight">
+            <div className="mt-5 text-4xl font-semibold tracking-tight text-foreground">
               Desde 3.500.000
-              <span className="ml-3 text-xl text-zinc-500 font-normal">| USD (1900)</span>
+              <span className="ml-3 text-xl font-normal text-muted-foreground">| USD (1900)</span>
             </div>
 
-            <p className="mt-5 text-[#d94b4b] text-2xl">Tendencia</p>
+            <p className="mt-5 text-2xl text-primary">Tendencia</p>
 
-            <ul className="mt-5 space-y-1 text-zinc-700 text-[22px] leading-tight">
-              <li>• 5 días 4 noches</li>
+            <ul className="mt-5 space-y-1 text-lg leading-tight text-muted-foreground sm:text-[22px]">
+              <li>• 5 dias 4 noches</li>
               <li>• Pesca de gigantes</li>
               <li>• Hotel con playa privada</li>
-              <li>• Gastronomía deliciosa</li>
+              <li>• Gastronomia deliciosa</li>
             </ul>
 
-            <p className="mt-6 text-[15px] leading-8 text-zinc-700">
-              En este recorrido por el Pacífico vamos en busca de las especies deseadas: Pez Vela,
+            <p className="mt-6 text-[15px] leading-8 text-muted-foreground">
+              En este recorrido por el Pacifico vamos en busca de las especies deseadas: Pez Vela,
               Marlyn, Gallo, Mahi Mahi, Atunes, entre otras grandes especies. Las embarcaciones con
-              nosotros son completamente equipadas y seguras, además podrás ir acompañado de capitán
-              experimentado y guías durante las jornadas completas.
+              nosotros son completamente equipadas y seguras, ademas podras ir acompanado de capitan
+              experimentado y guias durante las jornadas completas.
             </p>
 
-            <div className="mt-6 rounded-md border border-emerald-300 bg-emerald-50/60 px-4 py-3 text-center text-emerald-700 text-2xl">
+            <div className="mt-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-center text-lg text-emerald-700 dark:text-emerald-300 sm:text-2xl">
               Hurry! Solo <strong>4 Personas</strong>.
             </div>
 
             <div className="mt-8 flex items-center gap-3">
-              <div className="inline-flex items-center overflow-hidden rounded-md border border-zinc-300 bg-zinc-100">
+              <div className="inline-flex items-center overflow-hidden rounded-xl border border-border bg-secondary/80">
                 <button
                   type="button"
                   onClick={() => setQty((v) => Math.max(1, v - 1))}
-                  className="h-12 w-10 text-xl hover:bg-zinc-200 transition"
+                  className="h-12 w-10 text-xl transition hover:bg-secondary"
                 >
                   -
                 </button>
@@ -96,15 +99,12 @@ export default function BahiaSolanoPage() {
                 <button
                   type="button"
                   onClick={() => setQty((v) => v + 1)}
-                  className="h-12 w-10 text-xl hover:bg-zinc-200 transition"
+                  className="h-12 w-10 text-xl transition hover:bg-secondary"
                 >
                   +
                 </button>
               </div>
-              <button
-                type="button"
-                className="flex-1 h-12 rounded-md bg-black text-white text-lg tracking-wide hover:bg-zinc-800 transition"
-              >
+              <button type="button" className="theme-gold-button h-12 flex-1 rounded-xl text-base tracking-wide">
                 RESERVAR AHORA
               </button>
             </div>

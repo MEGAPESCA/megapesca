@@ -1,11 +1,11 @@
 "use client";
-import useEmblaCarousel from "embla-carousel-react";
+
 import * as React from "react";
 import Image from "next/image";
+import useEmblaCarousel from "embla-carousel-react";
 
 type Props = {
   slides?: string[];
-  /** Posiciones CSS para cada imagen, p. ej. "50% 40%" (x y). */
   positions?: string[];
 };
 
@@ -17,13 +17,12 @@ const defaultSlides = [
   "/launch/05.jpg",
 ];
 
-/** 🎯 Enfoque por imagen (la #3 bajada para mostrar más la cara) */
 const defaultPositions = [
-  "50% 50%", // img 1 centrada
-  "50% 50%", // img 2 centrada
-  "50% 20%", // img 3 bajada (muestra más la parte superior)
-  "50% 50%", // img 4 centrada
-  "50% 50%", // img 5 centrada
+  "50% 50%",
+  "50% 50%",
+  "50% 20%",
+  "50% 50%",
+  "50% 50%",
 ];
 
 export default function HeroCarousel({
@@ -36,14 +35,12 @@ export default function HeroCarousel({
     duration: 30,
   });
 
-  // Autoplay
   React.useEffect(() => {
     if (!api) return;
     const t = setInterval(() => api.scrollNext(), 4500);
     return () => clearInterval(t);
   }, [api]);
 
-  // Asegura que siempre haya una posición para cada slide
   const effectivePositions = React.useMemo(() => {
     const out = [...positions];
     for (let i = 0; i < slides.length; i++) {
@@ -53,11 +50,11 @@ export default function HeroCarousel({
   }, [positions, slides]);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black">
+    <div className="relative h-screen w-full overflow-hidden bg-background">
       <div ref={viewportRef} className="absolute inset-0 h-full">
         <div className="flex h-full">
           {slides.map((src, i) => (
-            <div key={i} className="relative min-w-full h-full">
+            <div key={i} className="relative h-full min-w-full">
               <Image
                 src={src}
                 alt={`Megapesca ${i + 1}`}
@@ -65,12 +62,11 @@ export default function HeroCarousel({
                 sizes="100vw"
                 style={{
                   objectFit: "cover",
-                  objectPosition: effectivePositions[i], // 👈 enfoque por slide
+                  objectPosition: effectivePositions[i],
                 }}
                 className="z-0"
                 priority={i === 0}
               />
-              {/* Vignette para contraste del contenido */}
               <div className="absolute inset-0 z-10 bg-gradient-to-t from-black via-black/60 to-black/20" />
             </div>
           ))}

@@ -5,12 +5,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
+import ThemeToggle from "@/components/ThemeToggle";
+
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/shop", label: "Tienda" },
   { href: "/trips", label: "Viajes" },
   { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contáctenos" },
+  { href: "/contact", label: "Contactenos" },
   { href: "/first-opportunity", label: "First-Opportunity" },
 ];
 
@@ -22,11 +24,11 @@ export default function MarketingHeader({ currentPath }: MarketingHeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-screen border-b border-[#d6a354]/20 bg-gradient-to-r from-black/85 via-black/80 to-black/85 backdrop-blur-xl">
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+    <header className="sticky top-0 z-50 w-screen border-b border-border/70 bg-background/80 backdrop-blur-xl">
+      <div className="flex w-full items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link
           href="/"
-          className="relative block h-12 w-[145px] sm:h-16 sm:w-[260px] transition-transform duration-300 hover:scale-[1.03]"
+          className="relative block h-12 w-[145px] transition-transform duration-300 hover:scale-[1.03] sm:h-16 sm:w-[260px]"
           aria-label="Megapesca"
         >
           <Image
@@ -34,23 +36,24 @@ export default function MarketingHeader({ currentPath }: MarketingHeaderProps) {
             alt="Megapesca"
             fill
             sizes="190px"
-            className="object-contain object-left drop-shadow-[0_6px_12px_rgba(214,163,84,0.25)]"
+            className="object-contain object-left drop-shadow-[0_6px_12px_rgba(214,163,84,0.18)]"
             priority
           />
         </Link>
 
-        <nav className="hidden sm:flex items-center gap-2 text-sm text-zinc-300">
+        <nav className="hidden items-center gap-2 text-sm text-muted-foreground sm:flex">
           {NAV_LINKS.map((item) => {
             const isActive = item.href === currentPath;
+
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`px-3 py-2 transition-all duration-300 ${
+                className={
                   isActive
-                    ? "bg-white/12 text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
-                    : "text-zinc-300 hover:bg-white/10 hover:text-white hover:shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
-                }`}
+                    ? "rounded-full bg-card px-3 py-2 text-foreground shadow-[0_10px_24px_rgba(15,23,42,0.12)]"
+                    : "rounded-full px-3 py-2 text-muted-foreground transition-all duration-300 hover:bg-secondary hover:text-foreground"
+                }
               >
                 {item.label}
               </Link>
@@ -59,37 +62,31 @@ export default function MarketingHeader({ currentPath }: MarketingHeaderProps) {
         </nav>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle className="hidden md:inline-flex" />
+
           <button
             type="button"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="sm:hidden border border-[#d6a354]/35 bg-white/5 p-2 hover:bg-white/10 transition"
-            aria-label={mobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            className="rounded-full border border-border/80 bg-background/70 p-2 transition hover:bg-secondary sm:hidden"
+            aria-label={mobileMenuOpen ? "Cerrar menu" : "Abrir menu"}
             aria-expanded={mobileMenuOpen}
           >
-            <span className="block h-0.5 w-5 bg-white" />
-            <span className="block h-0.5 w-5 bg-white mt-1.5" />
-            <span className="block h-0.5 w-5 bg-white mt-1.5" />
+            <span className="block h-0.5 w-5 bg-foreground" />
+            <span className="mt-1.5 block h-0.5 w-5 bg-foreground" />
+            <span className="mt-1.5 block h-0.5 w-5 bg-foreground" />
           </button>
 
           <SignedOut>
-            <Link
-              href="/sign-in"
-              className="border border-[#d6a354]/35 bg-white/5 px-4 py-2 text-sm text-zinc-100 hover:bg-white/10 transition-all duration-300"
-            >
+            <Link href="/sign-in" className="theme-outline-button hidden sm:inline-flex">
               Ingresar
             </Link>
-            <Link
-              href="/sign-up"
-              className="bg-gradient-to-r from-[#f1c981] via-[#d6a354] to-[#b88739] text-black font-semibold px-4 py-2 text-sm shadow-[0_8px_24px_rgba(214,163,84,0.3)] hover:brightness-110 transition-all duration-300"
-            >
+            <Link href="/sign-up" className="theme-gold-button hidden px-4 py-2 sm:inline-flex">
               Registrarse
             </Link>
           </SignedOut>
+
           <SignedIn>
-            <Link
-              href="/dashboard"
-              className="border border-[#d6a354]/35 bg-white/5 px-4 py-2 text-sm text-zinc-100 hover:bg-white/10 transition-all duration-300"
-            >
+            <Link href="/dashboard" className="theme-outline-button hidden sm:inline-flex">
               Mi panel
             </Link>
             <UserButton afterSignOutUrl="/" />
@@ -98,23 +95,57 @@ export default function MarketingHeader({ currentPath }: MarketingHeaderProps) {
       </div>
 
       {mobileMenuOpen && (
-        <div className="sm:hidden border-t border-[#d6a354]/20 bg-black/95">
-          <nav className="px-4 py-3 flex flex-col gap-2 text-sm text-zinc-200">
+        <div className="border-t border-border/70 bg-background/95 sm:hidden">
+          <div className="px-4 pt-3">
+            <ThemeToggle className="w-full justify-center" />
+          </div>
+
+          <nav className="flex flex-col gap-2 px-4 py-3 text-sm text-muted-foreground">
             {NAV_LINKS.map((item) => {
               const isActive = item.href === currentPath;
+
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`px-2 py-2 transition ${
-                    isActive ? "bg-white/12 text-white" : "hover:bg-white/10 hover:text-white"
-                  }`}
+                  className={
+                    isActive
+                      ? "rounded-xl bg-card px-3 py-2 text-foreground"
+                      : "rounded-xl px-3 py-2 transition hover:bg-secondary hover:text-foreground"
+                  }
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.label}
                 </Link>
               );
             })}
+
+            <SignedOut>
+              <Link
+                href="/sign-in"
+                className="theme-outline-button mt-2 w-full"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Ingresar
+              </Link>
+              <Link
+                href="/sign-up"
+                className="theme-gold-button w-full"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Registrarse
+              </Link>
+            </SignedOut>
+
+            <SignedIn>
+              <Link
+                href="/dashboard"
+                className="theme-outline-button mt-2 w-full"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Mi panel
+              </Link>
+            </SignedIn>
           </nav>
         </div>
       )}

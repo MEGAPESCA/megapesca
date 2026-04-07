@@ -1,12 +1,13 @@
 "use client";
+
 import { SignIn } from "@clerk/nextjs";
 
 export default function SignInPage() {
   return (
-    <main className="min-h-screen bg-black text-white flex items-center justify-center p-4">
+    <main className="theme-page flex min-h-screen items-center justify-center p-4">
       <div className="w-full max-w-md">
-        <h1 className="text-center text-xl font-semibold mb-4">Ingresar</h1>
-        <div className="rounded-xl border border-white/10 bg-white/5 p-4">
+        <h1 className="mb-4 text-center text-xl font-semibold">Ingresar</h1>
+        <div className="theme-panel p-4">
           <SignIn
             routing="path"
             path="/sign-in"

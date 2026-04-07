@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import MarketingHeader from "@/components/layout/MarketingHeader";
 
 export default function ContactPage() {
@@ -8,51 +9,39 @@ export default function ContactPage() {
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    // Aquí conectaremos Convex / Email API
     setStatus("sent");
   }
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="theme-page min-h-screen">
       <MarketingHeader currentPath="/contact" />
 
-      <section className="max-w-xl mx-auto px-6 py-16">
-        <h1 className="text-3xl font-bold mb-2">Contáctenos</h1>
-        <p className="text-zinc-300 mb-8">
-          Escríbenos y te respondemos pronto.
-        </p>
+      <section className="mx-auto max-w-xl px-6 py-16">
+        <div className="theme-panel p-8">
+          <h1 className="mb-2 text-3xl font-bold">Contactenos</h1>
+          <p className="mb-8 text-muted-foreground">
+            Escribenos y te respondemos pronto.
+          </p>
 
-        <form onSubmit={onSubmit} className="space-y-4">
-          <input
-            type="text"
-            placeholder="Tu nombre"
-            className="w-full h-10 px-3 rounded-md bg-white/10 border border-white/15"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Tu correo"
-            className="w-full h-10 px-3 rounded-md bg-white/10 border border-white/15"
-            required
-          />
-          <textarea
-            placeholder="¿Cómo podemos ayudarte?"
-            className="w-full h-32 p-3 rounded-md bg-white/10 border border-white/15"
-            required
-          />
-          <button
-            type="submit"
-            className="rounded-md bg-[#d6a354] text-black font-semibold px-6 h-10 hover:brightness-110 transition"
-          >
-            Enviar
-          </button>
+          <form onSubmit={onSubmit} className="space-y-4">
+            <input type="text" placeholder="Tu nombre" className="theme-input h-11" required />
+            <input type="email" placeholder="Tu correo" className="theme-input h-11" required />
+            <textarea
+              placeholder="Como podemos ayudarte?"
+              className="theme-input min-h-32 resize-none"
+              required
+            />
+            <button type="submit" className="theme-gold-button h-11 px-6">
+              Enviar
+            </button>
 
-          {status === "sent" && (
-            <p className="text-emerald-300 text-sm">
-              ¡Mensaje enviado! Te contactaremos pronto.
-            </p>
-          )}
-        </form>
+            {status === "sent" && (
+              <p className="rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-600 dark:text-emerald-300">
+                Mensaje enviado. Te contactaremos pronto.
+              </p>
+            )}
+          </form>
+        </div>
       </section>
     </main>
   );

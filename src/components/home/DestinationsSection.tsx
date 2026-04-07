@@ -22,14 +22,16 @@ const DESTINATIONS = [
 export default function DestinationsSection({ linksByTitle }: DestinationsSectionProps) {
   return (
     <section className="mx-auto w-full max-w-6xl px-4 py-14 sm:py-16">
-      <div className="mb-8 sm:mb-10 text-center">
-        <p className="text-[11px] uppercase tracking-[0.25em] text-[#d6a354] font-serif">Pesca y aventura</p>
-        <h2 className="mt-2 text-2xl font-serif font-semibold tracking-wide text-white sm:text-3xl">
+      <div className="mb-8 text-center sm:mb-10">
+        <p className="font-serif text-[11px] font-medium uppercase tracking-[0.25em] text-primary">
+          Pesca y aventura
+        </p>
+        <h2 className="mt-2 text-2xl font-serif font-semibold tracking-wide text-foreground sm:text-3xl">
           Destinos mas populares
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 auto-rows-fr md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid auto-rows-fr grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
         {DESTINATIONS.map((destination) => (
           <DestinationCard
             key={destination.title}

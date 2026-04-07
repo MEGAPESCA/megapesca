@@ -21,7 +21,7 @@ export default function HomeCarousel({ slides }: HomeCarouselProps) {
   }, [slides]);
 
   return (
-    <section className="relative w-full h-[34vh] min-h-[260px] sm:h-[48vh] sm:min-h-[380px] overflow-hidden border-b border-white/10">
+    <section className="relative h-[34vh] min-h-[260px] w-full overflow-hidden border-b border-border/70 sm:h-[48vh] sm:min-h-[380px]">
       {slides.map((src, index) => (
         <div
           key={src}
@@ -37,18 +37,18 @@ export default function HomeCarousel({ slides }: HomeCarouselProps) {
             className="object-cover"
             priority={index === 0}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/35 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
         </div>
       ))}
 
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+      <div className="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2">
         {slides.map((_, index) => (
           <button
             key={index}
             type="button"
             onClick={() => setCurrentSlide(index)}
             className={`h-2.5 rounded-full transition-all ${
-              index === currentSlide ? "w-6 bg-[#d6a354]" : "w-2.5 bg-white/55 hover:bg-white/80"
+              index === currentSlide ? "w-6 bg-primary" : "w-2.5 bg-white/55 hover:bg-white/80"
             }`}
             aria-label={`Ir a imagen ${index + 1}`}
           />

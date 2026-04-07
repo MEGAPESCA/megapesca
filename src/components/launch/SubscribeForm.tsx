@@ -14,11 +14,8 @@ export default function SubscribeForm() {
   const [error, setError] = React.useState<string | null>(null);
   const [ok, setOk] = React.useState(false);
 
-  const validEmail = (v: string) =>
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
-
-  const validPhone = (v: string) =>
-    v.trim() === "" || /^\+?\d[\d\s-]{6,}$/.test(v.trim());
+  const validEmail = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+  const validPhone = (v: string) => v.trim() === "" || /^\+?\d[\d\s-]{6,}$/.test(v.trim());
 
   const isValid =
     name.trim().length >= 2 &&
@@ -39,40 +36,36 @@ export default function SubscribeForm() {
 
     try {
       setLoading(true);
-      // Aquí integrarás tu backend/Convex/Sendgrid/etc.
-      console.log("Suscripción:", {
+      console.log("Suscripcion:", {
         name,
         email,
         whatsapp,
         isClient,
         joinWA,
       });
-
       setOk(true);
-      // setName(""); setEmail(""); setWhatsapp(""); setIsClient(""); setJoinWA("");
     } catch {
-      setError("Ocurrió un error al enviar. Intenta de nuevo.");
+      setError("Ocurrio un error al enviar. Intenta de nuevo.");
     } finally {
       setLoading(false);
     }
   }
 
   const inputCls =
-    "w-full rounded-md bg-white/10 border border-white/15 text-white placeholder:text-zinc-400 h-10 px-3 outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent";
+    "theme-input h-11 border-white/20 bg-white/10 text-white placeholder:text-white/60 focus:border-primary focus:ring-primary/30";
 
-  const groupLabel = "text-left text-sm font-medium text-zinc-200";
+  const groupLabel = "text-left text-sm font-medium text-white";
 
   const yesNoBox = (checked: boolean) =>
-    `flex items-center gap-2 rounded-md border px-3 py-2 cursor-pointer transition ${
+    `flex cursor-pointer items-center gap-2 rounded-xl border px-3 py-2 transition ${
       checked
-        ? "bg-white/15 border-white/30"
-        : "bg-white/5 border-white/15 hover:bg-white/10"
+        ? "border-primary/60 bg-primary/20 text-white"
+        : "border-white/20 bg-white/10 text-white hover:bg-white/15"
     }`;
 
   return (
     <form onSubmit={onSubmit} className="space-y-4">
-      {/* Campos principales */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div className="col-span-1">
           <label className={groupLabel} htmlFor="name">
             Nombre
@@ -109,7 +102,7 @@ export default function SubscribeForm() {
 
         <div className="col-span-1 sm:col-span-2">
           <label className={groupLabel} htmlFor="whatsapp">
-            WhatsApp <span className="text-zinc-400 font-normal">(opcional)</span>
+            WhatsApp <span className="font-normal text-white/70">(opcional)</span>
           </label>
           <input
             id="whatsapp"
@@ -123,10 +116,9 @@ export default function SubscribeForm() {
         </div>
       </div>
 
-      {/* Ya eres cliente */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div className="col-span-1">
-          <p className={groupLabel}>¿Ya eres cliente?</p>
+          <p className={groupLabel}>Ya eres cliente?</p>
           <div className="mt-2 flex items-center gap-3">
             <label className={yesNoBox(isClient === "yes")}>
               <input
@@ -135,7 +127,7 @@ export default function SubscribeForm() {
                 checked={isClient === "yes"}
                 onChange={() => setIsClient(isClient === "yes" ? "" : "yes")}
               />
-              <span>Sí</span>
+              <span>Si</span>
             </label>
             <label className={yesNoBox(isClient === "no")}>
               <input
@@ -149,9 +141,8 @@ export default function SubscribeForm() {
           </div>
         </div>
 
-        {/* Unirse al grupo de WhatsApp */}
         <div className="col-span-1">
-          <p className={groupLabel}>¿Quieres unirte a nuestro grupo de WhatsApp?</p>
+          <p className={groupLabel}>Quieres unirte a nuestro grupo de WhatsApp?</p>
           <div className="mt-2 flex items-center gap-3">
             <label className={yesNoBox(joinWA === "yes")}>
               <input
@@ -160,7 +151,7 @@ export default function SubscribeForm() {
                 checked={joinWA === "yes"}
                 onChange={() => setJoinWA(joinWA === "yes" ? "" : "yes")}
               />
-              <span>Sí</span>
+              <span>Si</span>
             </label>
             <label className={yesNoBox(joinWA === "no")}>
               <input
@@ -175,30 +166,28 @@ export default function SubscribeForm() {
         </div>
       </div>
 
-      {/* Estados */}
       {error && (
-        <p className="text-sm text-red-300 bg-red-900/30 border border-red-500/30 rounded-md px-3 py-2">
+        <p className="rounded-md border border-red-500/30 bg-red-900/30 px-3 py-2 text-sm text-red-200">
           {error}
         </p>
       )}
       {ok && (
-        <p className="text-sm text-emerald-300 bg-emerald-900/20 border border-emerald-500/30 rounded-md px-3 py-2">
-          ¡Listo! Te avisaremos del lanzamiento y novedades.
+        <p className="rounded-md border border-emerald-500/30 bg-emerald-900/20 px-3 py-2 text-sm text-emerald-200">
+          Listo. Te avisaremos del lanzamiento y novedades.
         </p>
       )}
 
-      {/* Enviar */}
       <div className="flex justify-center">
         <button
           type="submit"
           disabled={!isValid || loading}
-          className="rounded-md bg-[#d6a354] text-black font-semibold px-6 h-10 disabled:opacity-60 disabled:cursor-not-allowed hover:brightness-110 transition"
+          className="theme-gold-button h-11 px-6 disabled:cursor-not-allowed disabled:opacity-60"
         >
           {loading ? "Enviando..." : "Quiero estar al tanto"}
         </button>
       </div>
 
-      <p className="text-center text-xs text-zinc-400">
+      <p className="text-center text-xs text-white/70">
         Sin spam. Solo noticias del lanzamiento y ofertas.
       </p>
     </form>

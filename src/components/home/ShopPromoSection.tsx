@@ -1,6 +1,6 @@
-import Link from "next/link";
 import Image from "next/image";
-import { BadgePercent, ShieldCheck, Truck, Sparkles } from "lucide-react";
+import Link from "next/link";
+import { BadgePercent, ShieldCheck, Sparkles, Truck } from "lucide-react";
 
 const BRAND_LOGOS = [
   { src: "/marcas/brandlogo1.png", alt: "Marca 1" },
@@ -13,21 +13,21 @@ const BRAND_LOGOS = [
 
 const IMG_VERSION = "20260220";
 
-const BENEFICIOS = [
+const BENEFITS = [
   {
     icon: BadgePercent,
-    title: "Descuentos especiales en señuelos, ropa y accesorios",
-    description: "promociones activas durante todo el año",
+    title: "Descuentos especiales en senuelos, ropa y accesorios",
+    description: "promociones activas durante todo el ano",
   },
   {
     icon: ShieldCheck,
     title: "Productos seleccionados para pesca real",
-    description: "equipos probados para río, mar y aventura",
+    description: "equipos probados para rio, mar y aventura",
   },
   {
     icon: Truck,
-    title: "Envíos y atención con enfoque en la comunidad",
-    description: "compra fácil y acompañamiento cercano",
+    title: "Envios y atencion con enfoque en la comunidad",
+    description: "compra facil y acompanamiento cercano",
   },
 ];
 
@@ -35,9 +35,9 @@ function BrandMarquee() {
   const items = [...BRAND_LOGOS, ...BRAND_LOGOS];
 
   return (
-    <div className="relative mt-10 w-full overflow-hidden border-y border-zinc-200 bg-white py-2">
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-white to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-white to-transparent" />
+    <div className="relative mt-10 w-full overflow-hidden border-y border-border/70 bg-card/70 py-2">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-card to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-card to-transparent" />
 
       <div className="brand-marquee-track flex w-max items-center gap-5 px-4">
         {items.map((brand, index) => (
@@ -62,47 +62,45 @@ function BrandMarquee() {
 export default function ShopPromoSection() {
   return (
     <section className="relative pb-20">
-      <div className="h-16 bg-gradient-to-b from-black via-black/70 to-white" />
+      <div className="h-16 bg-gradient-to-b from-transparent via-primary/10 to-transparent" />
 
-      <div className="w-full border-y border-zinc-200 bg-gradient-to-b from-[#f8f9fc] to-white py-10 sm:py-14">
+      <div className="w-full border-y border-border/70 bg-card/60 py-10 sm:py-14">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid items-center gap-9 lg:grid-cols-[0.85fr_1.35fr]">
             <article>
-              <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#2458c8]">
+              <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
                 <Sparkles className="h-4 w-4" />
                 Megatienda Megapesca
               </p>
 
-              <h2 className="mt-3 text-3xl font-bold leading-tight text-zinc-900 sm:text-4xl">
+              <h2 className="mt-3 text-3xl font-bold leading-tight text-foreground sm:text-4xl">
                 Todo para equiparte mejor en cada salida de pesca
               </h2>
 
-              <p className="mt-4 max-w-xl text-zinc-600">
-                Descubre selección premium en señuelos, cañas, carreteles, ropa técnica y equipo outdoor.
+              <p className="mt-4 max-w-xl text-muted-foreground">
+                Descubre seleccion premium en senuelos, canas, carreteles, ropa tecnica y equipo outdoor.
                 Una tienda pensada para quienes viven la pesca en serio.
               </p>
 
               <ul className="mt-6 space-y-4">
-                {BENEFICIOS.map((item) => {
+                {BENEFITS.map((item) => {
                   const Icon = item.icon;
+
                   return (
                     <li key={item.title} className="flex items-start gap-3">
-                      <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-[#cdddff] bg-[#edf3ff]">
-                        <Icon className="h-5 w-5 text-[#2458c8]" />
+                      <span className="mt-0.5 inline-flex h-9 w-9 items-center justify-center rounded-lg border border-primary/20 bg-primary/10">
+                        <Icon className="h-5 w-5 text-primary" />
                       </span>
                       <span>
-                        <span className="block text-base font-semibold text-zinc-900">{item.title}</span>
-                        <span className="block text-sm text-zinc-600">{item.description}</span>
+                        <span className="block text-base font-semibold text-foreground">{item.title}</span>
+                        <span className="block text-sm text-muted-foreground">{item.description}</span>
                       </span>
                     </li>
                   );
                 })}
               </ul>
 
-              <Link
-                href="/shop"
-                className="mt-7 inline-flex items-center rounded-full bg-[#1f4fb7] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#1a43a0]"
-              >
+              <Link href="/shop" className="theme-gold-button mt-7">
                 Explorar la tienda
               </Link>
             </article>
@@ -110,7 +108,7 @@ export default function ShopPromoSection() {
             <div className="relative aspect-[16/10] w-full">
               <Image
                 src={`/megatienda/YARA%20PROMO-01.png?v=${IMG_VERSION}`}
-                alt="Promoción Megatienda Yara"
+                alt="Promocion Megatienda Yara"
                 fill
                 className="object-contain scale-[1.08]"
                 sizes="(min-width: 1280px) 62vw, (min-width: 1024px) 58vw, 100vw"
@@ -125,7 +123,7 @@ export default function ShopPromoSection() {
         </div>
       </div>
 
-      <div className="h-14 bg-gradient-to-b from-white to-black" />
+      <div className="h-14 bg-gradient-to-b from-transparent to-transparent" />
     </section>
   );
 }

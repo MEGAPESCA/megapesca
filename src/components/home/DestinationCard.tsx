@@ -24,7 +24,7 @@ export default function DestinationCard({ title, images, href }: DestinationCard
   }, [images]);
 
   const content = (
-    <article className="group h-full overflow-hidden rounded-3xl border border-[#d6a354]/25 bg-gradient-to-b from-white/[0.11] via-white/[0.07] to-white/[0.03] shadow-[0_18px_45px_rgba(0,0,0,0.55)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#d6a354]/55 hover:shadow-[0_26px_55px_rgba(214,163,84,0.25)]">
+    <article className="theme-panel-soft group h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_26px_55px_rgba(214,163,84,0.18)]">
       <div className="relative aspect-[4/3] w-full">
         {images.map((src, index) => (
           <div
@@ -46,12 +46,12 @@ export default function DestinationCard({ title, images, href }: DestinationCard
 
         <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10" />
 
-        <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+        <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5">
           {images.map((_, index) => (
             <span
               key={`${title}-${index}`}
               className={`h-1.5 rounded-full transition-all ${
-                index === currentImage ? "w-6 bg-[#d6a354]" : "w-1.5 bg-white/60"
+                index === currentImage ? "w-6 bg-primary" : "w-1.5 bg-white/60"
               }`}
             />
           ))}
@@ -59,7 +59,7 @@ export default function DestinationCard({ title, images, href }: DestinationCard
       </div>
 
       <div className="px-5 py-5 text-center">
-        <h3 className="text-xl font-serif font-semibold tracking-[0.06em] text-white">{title}</h3>
+        <h3 className="text-xl font-serif font-semibold tracking-[0.06em] text-foreground">{title}</h3>
       </div>
     </article>
   );
@@ -67,7 +67,7 @@ export default function DestinationCard({ title, images, href }: DestinationCard
   if (!href) return content;
 
   return (
-    <Link href={href} className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#d6a354] rounded-2xl">
+    <Link href={href} className="block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
       {content}
     </Link>
   );

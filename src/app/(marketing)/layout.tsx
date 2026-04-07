@@ -3,9 +3,5 @@ export default function MarketingLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <div className="min-h-screen bg-black text-white">
-      {children}
-    </div>
-  );
+  return <div className="theme-page min-h-screen">{children}</div>;
 }

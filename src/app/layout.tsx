@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "Megapesca",
@@ -22,16 +23,18 @@ export default function RootLayout({
   }
 
   return (
-    <ClerkProvider publishableKey={clerkPublishableKey}>
-      <html lang="es">
-        <body className="antialiased bg-black text-white min-h-screen flex flex-col">
-          <main className="flex-grow">
-            {children}
-          </main>
+    <html lang="es" suppressHydrationWarning>
+      <body className="theme-page antialiased min-h-screen flex flex-col">
+        <ClerkProvider publishableKey={clerkPublishableKey}>
+          <ThemeProvider>
+            <main className="flex-grow">
+              {children}
+            </main>
 
-          <Footer />
-        </body>
-      </html>
-    </ClerkProvider>
+            <Footer />
+          </ThemeProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }

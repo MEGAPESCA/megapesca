@@ -1,6 +1,6 @@
 "use client";
 
-const DEFAULT_MESSAGE = "Hola, quiero más información sobre Megapesca.";
+const DEFAULT_MESSAGE = "Hola, quiero mas informacion sobre Megapesca.";
 
 function getWhatsappHref() {
   const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "");
@@ -18,7 +18,7 @@ export default function WhatsAppFloatingButton() {
     <a
       href={href}
       aria-label="Hablar por WhatsApp"
-      className="fixed bottom-5 right-5 z-[60] inline-flex items-center gap-2 rounded-full border border-white/15 bg-[#25D366] px-4 py-3 text-sm font-semibold text-black shadow-[0_10px_28px_rgba(37,211,102,0.45)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
+      className="fixed bottom-5 right-5 z-[60] inline-flex items-center gap-2 rounded-full border border-emerald-300/40 bg-[#25D366] px-4 py-3 text-sm font-semibold text-black shadow-[0_10px_28px_rgba(37,211,102,0.45)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-110"
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
     >
