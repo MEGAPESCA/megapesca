@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+
 import BlogHero from "@/components/blog/bloghero";
 import MarketingHeader from "@/components/layout/MarketingHeader";
 
@@ -8,9 +10,13 @@ export default function BlogPage() {
     <main className="theme-page min-h-screen">
       <MarketingHeader currentPath="/blog" />
 
-      <section className="mx-auto max-w-6xl px-6 pb-20 pt-20">
-        <BlogHero />
+      <section className="px-3 pb-8 pt-6 sm:px-4 sm:pt-8 md:px-6 lg:px-8 xl:px-10">
+        <div className="mx-auto w-full max-w-[1600px]">
+          <BlogHero />
+        </div>
+      </section>
 
+      <section className="mx-auto max-w-6xl px-6 pb-20 pt-8 sm:pt-10">
         <div className="mt-16">
           <h2 className="mb-3 text-3xl font-semibold tracking-tight">Comunidad</h2>
 
@@ -39,14 +45,19 @@ export default function BlogPage() {
                 </h3>
 
                 <p className="text-sm leading-relaxed text-muted-foreground">
-                  Que tener en cuenta segun clima, nivel de experiencia y tipo de pesca.
+                  Si estas planeando tu proxima salida, aqui encuentras criterios claros para
+                  elegir un destino que se ajuste a tu experiencia, al clima que prefieres y al
+                  tipo de pesca que quieres vivir.
                 </p>
 
                 <div className="mt-5 flex items-center justify-between text-xs text-muted-foreground">
                   <span>6 min lectura</span>
-                  <span className="text-primary transition-transform duration-300 group-hover:translate-x-1">
-                    Leer mas →
-                  </span>
+                  <Link
+                    href="/blog/guia-destino-ideal"
+                    className="text-primary transition-transform duration-300 group-hover:translate-x-1"
+                  >
+                    Leer mas {"->"}
+                  </Link>
                 </div>
               </div>
             </article>
@@ -73,16 +84,19 @@ export default function BlogPage() {
                 </h3>
 
                 <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  Aqui ira el contenido. Mas adelante conectamos un CMS o Convex para gestion.
-                  Tambien puedes usar este espacio para hablar de destinos, equipo recomendado,
-                  logistica del viaje, condiciones del clima y consejos importantes antes de salir.
+                  Si quieres llegar mejor preparado a tu viaje, este articulo te guia paso a paso
+                  con recomendaciones practicas sobre equipo, logistica, clima y detalles clave
+                  para que disfrutes la experiencia con mas seguridad y confianza.
                 </p>
 
                 <div className="mt-6 flex items-center justify-between text-xs text-muted-foreground sm:text-sm">
                   <span>8 min lectura</span>
-                  <span className="text-primary transition-transform duration-300 group-hover:translate-x-1">
-                    Leer articulo completo →
-                  </span>
+                  <Link
+                    href="/blog/prepararte-expedicion-pesca-colombia"
+                    className="text-primary transition-transform duration-300 group-hover:translate-x-1"
+                  >
+                    Leer articulo completo {"->"}
+                  </Link>
                 </div>
               </div>
             </article>
