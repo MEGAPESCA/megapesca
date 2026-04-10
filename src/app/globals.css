@@ -184,3 +184,12 @@
 .brand-marquee-track {
   animation: brandMarquee 26s linear infinite;
 }
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

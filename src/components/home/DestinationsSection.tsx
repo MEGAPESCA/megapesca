@@ -31,7 +31,21 @@ export default function DestinationsSection({ linksByTitle }: DestinationsSectio
         </h2>
       </div>
 
-      <div className="grid auto-rows-fr grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+      <div className="md:hidden">
+        <div className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-3">
+          {DESTINATIONS.map((destination) => (
+            <div key={destination.title} className="min-w-[84%] snap-center first:pl-0 last:pr-1">
+              <DestinationCard
+                title={destination.title}
+                images={destination.images}
+                href={linksByTitle?.[destination.title]}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="hidden auto-rows-fr gap-5 md:grid md:grid-cols-2 lg:grid-cols-3">
         {DESTINATIONS.map((destination) => (
           <DestinationCard
             key={destination.title}

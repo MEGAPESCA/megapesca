@@ -67,7 +67,10 @@ export default function DestinationCard({ title, images, href }: DestinationCard
   if (!href) return content;
 
   return (
-    <Link href={href} className="block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+    <Link
+      href={href}
+      className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+    >
       {content}
     </Link>
   );
