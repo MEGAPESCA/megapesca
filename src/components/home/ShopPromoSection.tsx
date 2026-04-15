@@ -43,11 +43,11 @@ function BrandMarquee() {
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-card to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-card to-transparent" />
 
-      <div className="brand-marquee-track flex w-max items-center gap-5 px-4">
+      <div className="brand-marquee-track flex w-max items-center gap-2 px-3 sm:gap-3 sm:px-4">
         {items.map((brand, index) => (
           <span
             key={`${brand.alt}-${index}`}
-            className="inline-flex h-20 w-[250px] shrink-0 items-center justify-center px-2"
+            className="inline-flex h-20 w-[190px] shrink-0 items-center justify-center px-1 sm:w-[210px] sm:px-2 lg:w-[220px]"
           >
             <Image
               src={brand.src}
