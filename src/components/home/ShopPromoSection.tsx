@@ -11,8 +11,6 @@ const BRAND_LOGOS = [
   { src: "/marcas/brandlogo6.png", alt: "Marca 6" },
 ];
 
-const IMG_VERSION = "20260220";
-
 const BENEFITS = [
   {
     icon: BadgePercent,
@@ -66,30 +64,30 @@ export default function ShopPromoSection() {
 
       <div className="w-full border-y border-border/70 bg-card/60 py-10 sm:py-14">
         <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-6 text-center sm:mb-8">
-              <p className="font-serif text-[clamp(1.1rem,2.6vw,2rem)] font-semibold leading-tight tracking-[0.08em] text-primary/70 drop-shadow-[0_0_14px_rgba(214,163,84,0.28)]">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-4 text-center sm:mb-7">
+              <p className="font-serif text-[clamp(1.2rem,2.8vw,2.15rem)] font-semibold leading-tight tracking-[0.07em] text-primary/75 drop-shadow-[0_0_18px_rgba(214,163,84,0.24)]">
                 Distribuidor oficial de Yara en Colombia
               </p>
             </div>
 
-            <div className="relative mx-auto overflow-hidden px-2 py-2 sm:px-6 sm:py-4">
-              <div className="pointer-events-none absolute inset-x-[20%] top-[12%] h-24 rounded-full bg-primary/18 blur-3xl sm:h-36" />
-              <div className="pointer-events-none absolute inset-x-[28%] bottom-[10%] h-20 rounded-full bg-primary/10 blur-3xl sm:h-28" />
-              <div className="relative aspect-[16/10] w-full sm:aspect-[15/10]">
+            <div className="relative mx-auto w-full max-w-[36rem] overflow-hidden px-0 py-1 sm:max-w-4xl sm:px-4 sm:py-3 lg:max-w-5xl">
+              <div className="pointer-events-none absolute inset-x-[18%] top-[10%] h-28 rounded-full bg-primary/20 blur-3xl sm:inset-x-[20%] sm:h-36" />
+              <div className="pointer-events-none absolute inset-x-[22%] bottom-[8%] h-24 rounded-full bg-primary/12 blur-3xl sm:inset-x-[28%] sm:h-28" />
+              <div className="relative aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-[15/9]">
                 <Image
-                  src={`/megatienda/YARA%20PROMO-01.png?v=${IMG_VERSION}`}
+                  src="/megatienda/YARA PROMO-01.png"
                   alt="Promocion Megatienda Yara"
                   fill
-                  className="object-contain scale-[1.05] sm:scale-[1.08]"
-                  sizes="(min-width: 1280px) 62vw, (min-width: 1024px) 58vw, 100vw"
+                  className="object-contain scale-[1.22] sm:scale-[1.16] lg:scale-[1.12]"
+                  sizes="(min-width: 1280px) 68vw, (min-width: 1024px) 62vw, (min-width: 640px) 78vw, 96vw"
                   priority
                 />
               </div>
             </div>
           </div>
 
-          <article className="mx-auto mt-10 max-w-5xl text-center">
+          <article className="mx-auto mt-8 max-w-5xl text-center sm:mt-10">
             <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">
               <Sparkles className="h-4 w-4" />
               Megatienda Megapesca
