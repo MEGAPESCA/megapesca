@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BadgePercent, ShieldCheck, Sparkles, Truck } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 const BRAND_LOGOS = [
   { src: "/marcas/brandlogo1.png", alt: "Marca 1" },
@@ -11,21 +11,27 @@ const BRAND_LOGOS = [
   { src: "/marcas/brandlogo6.png", alt: "Marca 6" },
 ];
 
-const BENEFITS = [
+const FEATURED_PRODUCTS = [
   {
-    icon: BadgePercent,
-    title: "Descuentos especiales en senuelos, ropa y accesorios",
-    description: "promociones activas durante todo el ano",
+    name: "MAG DOD YARA",
+    href: "https://store.megapesca.co/products/mag-dod-yara?variant=52584241398035",
+    imageSrc: "/megatienda/YARA PROMO-01.png",
+    imagePosition: "18% 74%",
+    accent: "NUEVO",
   },
   {
-    icon: ShieldCheck,
-    title: "Productos seleccionados para pesca real",
-    description: "equipos probados para rio, mar y aventura",
+    name: "Linea Tournament Yara",
+    href: "https://store.megapesca.co/products/linea-tournament-yara?variant=52927157895443",
+    imageSrc: "/megatienda/YARA PROMO-01.png",
+    imagePosition: "78% 42%",
+    accent: "YARA",
   },
   {
-    icon: Truck,
-    title: "Envios y atencion con enfoque en la comunidad",
-    description: "compra facil y acompanamiento cercano",
+    name: "Encrenca",
+    href: "https://store.megapesca.co/products/encrenca?variant=52551470579987",
+    imageSrc: "/megatienda/YARA PROMO-01.png",
+    imagePosition: "58% 78%",
+    accent: "DESTACADO",
   },
 ];
 
@@ -94,38 +100,88 @@ export default function ShopPromoSection() {
             </p>
 
             <h2 className="mt-4 font-serif text-4xl font-semibold leading-[1.02] tracking-[-0.03em] text-foreground sm:text-5xl lg:text-6xl">
-              Todo para equiparte mejor en cada salida de pesca
+              Productos destacados para tu proxima jornada
             </h2>
 
-            <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Descubre seleccion premium en senuelos, canas, carreteles, ropa tecnica y equipo outdoor.
-              Una tienda pensada para quienes viven la pesca en serio.
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed tracking-[0.08em] text-muted-foreground sm:text-base">
+              Explora una seleccion real de nuestra tienda y descubre equipos pensados para pescar con confianza en cada salida.
             </p>
 
-            <ul className="mt-8 grid gap-4 md:grid-cols-3">
-              {BENEFITS.map((item) => {
-                const Icon = item.icon;
-
-                return (
-                  <li
-                    key={item.title}
-                    className="theme-panel-soft flex h-full items-start gap-4 p-5 text-left"
+            <div className="mt-8 md:hidden">
+              <div className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-1 pb-2">
+                {FEATURED_PRODUCTS.map((product) => (
+                  <Link
+                    key={product.name}
+                    href={product.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="theme-panel-soft group min-w-[82%] snap-center overflow-hidden p-3 text-left"
                   >
-                    <span className="mt-0.5 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-primary/10">
-                      <Icon className="h-5 w-5 text-primary" />
-                    </span>
-                    <span>
-                      <span className="block text-base font-semibold leading-snug text-foreground">
-                        {item.title}
+                    <div className="relative aspect-[4/4.5] overflow-hidden rounded-[1.6rem] bg-[radial-gradient(circle_at_top,rgba(214,163,84,0.16),transparent_38%),linear-gradient(180deg,rgba(20,24,35,0.98),rgba(10,12,20,0.98))]">
+                      <div className="absolute left-3 top-3 z-10 rounded-full border border-primary/20 bg-background/75 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-primary backdrop-blur-sm">
+                        {product.accent}
+                      </div>
+                      <div className="pointer-events-none absolute inset-x-[20%] top-[12%] h-24 rounded-full bg-primary/16 blur-3xl" />
+                      <div className="pointer-events-none absolute inset-x-[24%] bottom-[8%] h-16 rounded-full bg-primary/10 blur-3xl" />
+                      <Image
+                        src={product.imageSrc}
+                        alt={product.name}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        style={{ objectPosition: product.imagePosition }}
+                        sizes="82vw"
+                      />
+                    </div>
+                    <div className="px-2 pb-1 pt-4">
+                      <p className="font-serif text-2xl font-semibold leading-tight text-foreground">
+                        {product.name}
+                      </p>
+                      <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                        Ver producto
+                        <span className="transition-transform duration-300 group-hover:translate-x-1">-&gt;</span>
                       </span>
-                      <span className="mt-1 block text-sm leading-relaxed text-muted-foreground">
-                        {item.description}
-                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-8 hidden gap-5 md:grid md:grid-cols-3">
+              {FEATURED_PRODUCTS.map((product) => (
+                <Link
+                  key={product.name}
+                  href={product.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="theme-panel-soft group overflow-hidden p-4 text-left"
+                >
+                  <div className="relative aspect-[4/4.3] overflow-hidden rounded-[1.8rem] bg-[radial-gradient(circle_at_top,rgba(214,163,84,0.14),transparent_36%),linear-gradient(180deg,rgba(20,24,35,0.98),rgba(10,12,20,0.98))]">
+                    <div className="absolute left-4 top-4 z-10 rounded-full border border-primary/20 bg-background/75 px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-primary backdrop-blur-sm">
+                      {product.accent}
+                    </div>
+                    <div className="pointer-events-none absolute inset-x-[20%] top-[12%] h-24 rounded-full bg-primary/16 blur-3xl" />
+                    <div className="pointer-events-none absolute inset-x-[24%] bottom-[8%] h-16 rounded-full bg-primary/10 blur-3xl" />
+                    <Image
+                      src={product.imageSrc}
+                      alt={product.name}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      style={{ objectPosition: product.imagePosition }}
+                      sizes="(min-width: 1280px) 26vw, (min-width: 768px) 30vw, 100vw"
+                    />
+                  </div>
+                  <div className="px-2 pb-1 pt-5">
+                    <p className="font-serif text-[1.75rem] font-semibold leading-tight text-foreground">
+                      {product.name}
+                    </p>
+                    <span className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                      Ver producto
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">-&gt;</span>
                     </span>
-                  </li>
-                );
-              })}
-            </ul>
+                  </div>
+                </Link>
+              ))}
+            </div>
 
             <Link href="/shop" className="theme-gold-button mt-8">
               Explorar la tienda
