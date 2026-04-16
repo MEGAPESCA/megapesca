@@ -15,22 +15,19 @@ const FEATURED_PRODUCTS = [
   {
     name: "MAG DOD YARA",
     href: "https://store.megapesca.co/products/mag-dod-yara?variant=52584241398035",
-    imageSrc: "/megatienda/YARA PROMO-01.png",
-    imagePosition: "18% 74%",
+    imageSrc: "/megatienda/MAD DOG YARA.png",
     accent: "NUEVO",
   },
   {
     name: "Linea Tournament Yara",
     href: "https://store.megapesca.co/products/linea-tournament-yara?variant=52927157895443",
-    imageSrc: "/megatienda/YARA PROMO-01.png",
-    imagePosition: "78% 42%",
+    imageSrc: "/megatienda/TOURNAMENT 4.png",
     accent: "YARA",
   },
   {
     name: "Encrenca",
     href: "https://store.megapesca.co/products/encrenca?variant=52551470579987",
-    imageSrc: "/megatienda/YARA PROMO-01.png",
-    imagePosition: "58% 78%",
+    imageSrc: "/megatienda/ENCRENCA DORSO.png",
     accent: "DESTACADO",
   },
 ];
@@ -127,8 +124,7 @@ export default function ShopPromoSection() {
                         src={product.imageSrc}
                         alt={product.name}
                         fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        style={{ objectPosition: product.imagePosition }}
+                        className="object-contain p-5 transition-transform duration-500 group-hover:scale-105 sm:p-6"
                         sizes="82vw"
                       />
                     </div>
@@ -165,8 +161,7 @@ export default function ShopPromoSection() {
                       src={product.imageSrc}
                       alt={product.name}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      style={{ objectPosition: product.imagePosition }}
+                      className="object-contain p-6 transition-transform duration-500 group-hover:scale-105"
                       sizes="(min-width: 1280px) 26vw, (min-width: 768px) 30vw, 100vw"
                     />
                   </div>
