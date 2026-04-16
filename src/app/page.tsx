@@ -6,6 +6,7 @@ import AboutMegapescaSection from "@/components/home/AboutMegapescaSection";
 import DestinationsSection from "@/components/home/DestinationsSection";
 import HomeCarousel, { type HomeSlide } from "@/components/home/HomeCarousel";
 import ShopPromoSection from "@/components/home/ShopPromoSection";
+import CommunityWelcomePopup from "@/components/common/CommunityWelcomePopup";
 import WhatsAppFloatingButton from "@/components/common/WhatsAppFloatingButton";
 import MarketingHeader from "@/components/layout/MarketingHeader";
 
@@ -45,6 +46,7 @@ const HOME_SLIDES: HomeSlide[] = [
 export default function Home() {
   return (
     <main className="theme-page flex min-h-screen flex-col">
+      <CommunityWelcomePopup />
       <MarketingHeader currentPath="/" />
 
       <HomeCarousel slides={HOME_SLIDES} />
