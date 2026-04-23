@@ -52,20 +52,16 @@ export default function TripsHero() {
             <div className="pointer-events-none absolute -left-10 top-20 h-40 w-40 rounded-full bg-primary/12 blur-3xl" />
             <div className="pointer-events-none absolute left-[14%] top-[18%] h-32 w-32 rounded-full bg-primary/12 blur-3xl" />
 
-            <div className="absolute inset-x-0 top-[58%] -translate-y-1/2 p-5 sm:top-auto sm:bottom-16 sm:translate-y-0 sm:p-6 lg:bottom-20 lg:p-8">
-              <div className="w-full max-w-[17rem] sm:max-w-[30rem] lg:max-w-[36rem]">
+            <div className="absolute inset-x-0 top-[56%] -translate-y-1/2 p-5 sm:top-auto sm:bottom-16 sm:translate-y-0 sm:p-6 lg:bottom-20 lg:p-8">
+              <div className="w-full max-w-[18.5rem] sm:max-w-[30rem] lg:max-w-[36rem]">
                 <p className="text-[0.62rem] font-semibold uppercase tracking-[0.26em] text-primary/90 drop-shadow-[0_3px_14px_rgba(0,0,0,0.5)] sm:text-[0.68rem]">
                   Temporada activa
                 </p>
 
-                <h1 className="mt-3 max-w-[13ch] font-serif text-[0.98rem] font-semibold leading-[1.02] tracking-[-0.04em] text-white drop-shadow-[0_12px_32px_rgba(0,0,0,0.55)] sm:hidden">
-                  Viajes creados
-                  <br />
-                  para vivir
-                  <br />
-                  la pesca con mas
-                  <br />
-                  intensidad.
+                <h1 className="mt-3 max-w-[14ch] font-serif text-[1.08rem] font-semibold leading-[0.98] tracking-[-0.04em] text-white drop-shadow-[0_12px_32px_rgba(0,0,0,0.55)] sm:hidden">
+                  <span className="block">Viajes creados</span>
+                  <span className="block">para vivir la pesca</span>
+                  <span className="block">con mas intensidad.</span>
                 </h1>
 
                 <h1 className="mt-3 hidden max-w-[18ch] font-serif text-[1.85rem] font-semibold leading-[1.02] tracking-[-0.04em] text-white drop-shadow-[0_12px_32px_rgba(0,0,0,0.55)] sm:block lg:max-w-[20ch] lg:text-[2.45rem]">
