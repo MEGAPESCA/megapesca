@@ -52,13 +52,23 @@ export default function TripsHero() {
             <div className="pointer-events-none absolute -left-10 top-20 h-40 w-40 rounded-full bg-primary/12 blur-3xl" />
             <div className="pointer-events-none absolute left-[14%] top-[18%] h-32 w-32 rounded-full bg-primary/12 blur-3xl" />
 
-            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-6 lg:p-8">
-              <div className="w-full max-w-[20rem] sm:max-w-[36rem] lg:max-w-[48rem]">
+            <div className="absolute inset-x-0 top-[58%] -translate-y-1/2 p-5 sm:top-auto sm:bottom-16 sm:translate-y-0 sm:p-6 lg:bottom-20 lg:p-8">
+              <div className="w-full max-w-[17rem] sm:max-w-[30rem] lg:max-w-[36rem]">
                 <p className="text-[0.62rem] font-semibold uppercase tracking-[0.26em] text-primary/90 drop-shadow-[0_3px_14px_rgba(0,0,0,0.5)] sm:text-[0.68rem]">
                   Temporada activa
                 </p>
 
-                <h1 className="mt-3 max-w-[12ch] font-serif text-[1.15rem] font-semibold leading-[1.02] tracking-[-0.04em] text-white drop-shadow-[0_12px_32px_rgba(0,0,0,0.55)] sm:max-w-[20ch] sm:text-[1.95rem] lg:max-w-[24ch] lg:text-[2.75rem]">
+                <h1 className="mt-3 max-w-[13ch] font-serif text-[0.98rem] font-semibold leading-[1.02] tracking-[-0.04em] text-white drop-shadow-[0_12px_32px_rgba(0,0,0,0.55)] sm:hidden">
+                  Viajes creados
+                  <br />
+                  para vivir
+                  <br />
+                  la pesca con mas
+                  <br />
+                  intensidad.
+                </h1>
+
+                <h1 className="mt-3 hidden max-w-[18ch] font-serif text-[1.85rem] font-semibold leading-[1.02] tracking-[-0.04em] text-white drop-shadow-[0_12px_32px_rgba(0,0,0,0.55)] sm:block lg:max-w-[20ch] lg:text-[2.45rem]">
                   <span className="block">Viajes creados para vivir</span>
                   <span className="block whitespace-nowrap text-[1.1em]">
                     la pesca con mas intensidad.
@@ -67,7 +77,7 @@ export default function TripsHero() {
               </div>
             </div>
 
-            <div className="absolute inset-x-0 bottom-6 flex justify-center gap-2 sm:bottom-8">
+            <div className="absolute inset-x-0 bottom-4 flex justify-center gap-2 sm:bottom-8">
               {HERO_IMAGES.map((_, index) => (
                 <span
                   key={index}
