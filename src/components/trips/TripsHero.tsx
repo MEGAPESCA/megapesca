@@ -9,6 +9,20 @@ const HERO_IMAGES = [
   "/launch/hometopocoro1.jpg",
 ];
 
+function getReserveHref() {
+  const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER?.replace(/\D/g, "");
+
+  if (!phone) {
+    return "/contact";
+  }
+
+  const text = encodeURIComponent(
+    "Hola, quiero reservar un viaje con Megapesca.",
+  );
+
+  return `https://wa.me/${phone}?text=${text}`;
+}
+
 function getNextIndex(current: number) {
   const choices = HERO_IMAGES.map((_, index) => index).filter(
     (index) => index !== current,
@@ -19,6 +33,8 @@ function getNextIndex(current: number) {
 
 export default function TripsHero() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const reserveHref = getReserveHref();
+  const reserveIsExternal = reserveHref.startsWith("https://");
 
   useEffect(() => {
     const timeout = window.setTimeout(() => {
@@ -52,7 +68,7 @@ export default function TripsHero() {
             <div className="pointer-events-none absolute -left-10 top-20 h-40 w-40 rounded-full bg-primary/12 blur-3xl" />
             <div className="pointer-events-none absolute left-[14%] top-[18%] h-32 w-32 rounded-full bg-primary/12 blur-3xl" />
 
-            <div className="absolute inset-x-0 bottom-24 p-5 sm:top-auto sm:bottom-16 sm:translate-y-0 sm:p-6 lg:bottom-20 lg:p-8">
+            <div className="absolute inset-x-0 bottom-36 p-5 sm:top-auto sm:bottom-16 sm:translate-y-0 sm:p-6 lg:bottom-20 lg:p-8">
               <div className="w-full max-w-[18.5rem] sm:max-w-[30rem] lg:max-w-[36rem]">
                 <p className="text-[0.62rem] font-semibold uppercase tracking-[0.26em] text-primary/90 drop-shadow-[0_3px_14px_rgba(0,0,0,0.5)] sm:text-[0.68rem]">
                   Temporada activa
@@ -70,6 +86,15 @@ export default function TripsHero() {
                     la pesca con mas intensidad.
                   </span>
                 </h1>
+
+                <a
+                  href={reserveHref}
+                  target={reserveIsExternal ? "_blank" : undefined}
+                  rel={reserveIsExternal ? "noopener noreferrer" : undefined}
+                  className="mt-4 inline-flex items-center rounded-full bg-primary px-5 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-black shadow-[0_16px_36px_rgba(236,182,75,0.28)] transition-all duration-300 hover:-translate-y-0.5 hover:brightness-105 sm:mt-6 sm:px-6 sm:py-3.5 sm:text-[0.76rem]"
+                >
+                  Reservar viaje
+                </a>
               </div>
             </div>
 
