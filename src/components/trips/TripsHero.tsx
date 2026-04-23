@@ -52,7 +52,7 @@ export default function TripsHero() {
             <div className="pointer-events-none absolute -left-10 top-20 h-40 w-40 rounded-full bg-primary/12 blur-3xl" />
             <div className="pointer-events-none absolute left-[14%] top-[18%] h-32 w-32 rounded-full bg-primary/12 blur-3xl" />
 
-            <div className="absolute inset-x-0 top-[56%] -translate-y-1/2 p-5 sm:top-auto sm:bottom-16 sm:translate-y-0 sm:p-6 lg:bottom-20 lg:p-8">
+            <div className="absolute inset-x-0 bottom-24 p-5 sm:top-auto sm:bottom-16 sm:translate-y-0 sm:p-6 lg:bottom-20 lg:p-8">
               <div className="w-full max-w-[18.5rem] sm:max-w-[30rem] lg:max-w-[36rem]">
                 <p className="text-[0.62rem] font-semibold uppercase tracking-[0.26em] text-primary/90 drop-shadow-[0_3px_14px_rgba(0,0,0,0.5)] sm:text-[0.68rem]">
                   Temporada activa
