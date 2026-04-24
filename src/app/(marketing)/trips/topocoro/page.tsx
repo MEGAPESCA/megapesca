@@ -11,24 +11,25 @@ const TOPOCORO_IMAGES = [
 export default function TopocoroPage() {
   return (
     <TripDetailPage
-      title="Topocoro"
+      title="Tournament"
       location="Santander"
       reviews={7}
-      priceCop="2.400.000"
+      priceCop="750.000"
       priceUsd="1250"
-      badge="Escapada premium"
+      badge={"3\u00B0 Edici\u00F3n 2026"}
       highlights={[
-        "3 dias 2 noches",
-        "Paisajes tranquilos y gran belleza natural",
-        "Ideal para una salida corta con calidad",
-        "Guias y acompañamiento durante la experiencia",
+        "2 d\u00EDas 1 noche.",
+        "Viaje grupal.",
+        "Embalse en medio de monta\u00F1as, r\u00EDos, paisajes serenos y jornadas activas.",
+        "Ideal para pesca de Peacock Bass.",
+        "Acompa\u00F1amiento Mega Pesca para una experiencia brutal y \u00FAnica.",
       ]}
       description={[
-        "Topocoro es una excelente opcion para quienes quieren una experiencia de pesca deportiva mas cercana, bien organizada y con un equilibrio ideal entre descanso, paisaje y accion.",
-        "El destino se presta muy bien para escapadas cortas, viajes con amigos o jornadas donde quieres salir de la rutina sin sacrificar una experiencia bien cuidada.",
-        "Su entorno natural, la tranquilidad del embalse y la posibilidad de disfrutar una salida premium lo convierten en una alternativa muy atractiva dentro del portafolio Megapesca.",
+        "Tournament by Mega Pesca es nuestro torneo insignia alrededor del Peacock Bass en Colombia: una cita anual donde la pesca deportiva se vive con intensidad, nivel y una energia que solo aparece cuando se reunen quienes comparten la misma pasion.",
+        "En Topocoro, cada jornada se convierte en una experiencia que va mucho mas alla de la captura. Llegan pescadores de distintas regiones y paises para competir, conectar, aprender, compartir en comunidad y formar parte de un evento que deja huella dentro y fuera del agua.",
+        "Mas que un viaje, Tournament es una experiencia disenada para quienes quieren estar en el lugar donde sucede lo importante: un escenario imponente, una organizacion cuidada al detalle y una comunidad que entiende la pesca como estilo de vida. Estar aqui no es solo asistir a un torneo; es hacer parte de uno de los momentos mas representativos de la pesca deportiva en Colombia.",
       ]}
-      availabilityMessage="Alta demanda en fines de semana. Agenda tu fecha con tiempo."
+      availabilityMessage="Fechas muy solicitadas en temporada activa. Reserva con anticipacion tu salida."
       images={TOPOCORO_IMAGES}
     />
   );
