@@ -27,7 +27,7 @@ function getReserveHref(title: string, qty: number) {
   }
 
   const text = encodeURIComponent(
-    `Hola, quiero reservar ${qty} cupo(s) para ${title} con Megapesca.`
+    `Hola, quiero reservar ${qty} cupo(s) para ${title} con Megapesca.`,
   );
 
   return `https://wa.me/${phone}?text=${text}`;
@@ -77,32 +77,50 @@ export default function TripDetailPage({
                     : "border-border hover:border-primary/60"
                 }`}
               >
-                <Image src={img} alt={`${title} miniatura ${idx + 1}`} fill className="object-cover" />
+                <Image
+                  src={img}
+                  alt={`${title} miniatura ${idx + 1}`}
+                  fill
+                  className="object-cover"
+                />
               </button>
             ))}
           </div>
 
           <div className="theme-panel-soft order-1 relative overflow-hidden lg:order-2">
             <div className="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4]">
-              <Image src={images[activeImage]} alt={title} fill className="object-cover" />
+              <Image
+                src={images[activeImage]}
+                alt={title}
+                fill
+                className="object-cover"
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
             </div>
           </div>
 
           <article className="theme-panel order-3 p-6">
-            <p className="font-serif text-xs uppercase tracking-[0.24em] text-primary">{location}</p>
-            <h1 className="mt-3 font-serif text-3xl font-semibold tracking-wide text-foreground">{title}</h1>
+            <p className="font-serif text-xs uppercase tracking-[0.24em] text-primary">
+              {location}
+            </p>
+            <h1 className="mt-3 font-serif text-3xl font-semibold tracking-wide text-foreground">
+              {title}
+            </h1>
 
             <div className="mt-3 flex flex-wrap items-center gap-4 text-sm">
-              <span className="font-medium text-emerald-600 dark:text-emerald-300">Disponible</span>
+              <span className="font-medium text-emerald-600 dark:text-emerald-300">
+                Prontamente
+              </span>
               <span className="text-muted-foreground">{location}</span>
-              <span className="text-primary">★★★★★</span>
-              <span className="text-muted-foreground">{reviews} reviews</span>
+              <span className="text-primary">5 estrellas</span>
+              <span className="text-muted-foreground">{reviews} opiniones</span>
             </div>
 
             <div className="mt-5 text-4xl font-semibold tracking-tight text-foreground">
               Desde {priceCop}
-              <span className="ml-3 text-xl font-normal text-muted-foreground">| USD ({priceUsd})</span>
+              <span className="ml-3 text-xl font-normal text-muted-foreground">
+                | USD ({priceUsd})
+              </span>
             </div>
 
             <p className="mt-5 text-2xl text-primary">{badge}</p>
