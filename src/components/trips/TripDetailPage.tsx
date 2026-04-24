@@ -56,12 +56,39 @@ export default function TripDetailPage({
       <MarketingHeader currentPath="/trips" />
 
       <section className="mx-auto w-full max-w-7xl px-4 py-8 sm:py-10">
-        <div className="mb-6 text-sm text-muted-foreground">
+        <div className="mb-6 hidden text-sm text-muted-foreground sm:block">
           <Link href="/trips" className="transition hover:text-foreground">
             Viajes
           </Link>
           <span className="mx-2">&gt;</span>
           <span className="text-foreground">{title}</span>
+        </div>
+
+        <div className="theme-panel mb-5 p-5 sm:hidden">
+          <p className="font-serif text-[0.7rem] uppercase tracking-[0.24em] text-primary">
+            {location}
+          </p>
+          <h1 className="mt-3 font-serif text-3xl font-semibold tracking-wide text-foreground">
+            {title}
+          </h1>
+
+          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+            <span className="font-medium text-emerald-600 dark:text-emerald-300">
+              Prontamente
+            </span>
+            <span className="text-muted-foreground">{location}</span>
+            <span className="text-primary">5 estrellas</span>
+            <span className="text-muted-foreground">{reviews} opiniones</span>
+          </div>
+
+          <div className="mt-5 text-[2.2rem] font-semibold leading-none tracking-tight text-foreground">
+            Desde {priceCop}
+            <span className="mt-2 block text-2xl font-normal text-muted-foreground">
+              USD ({priceUsd})
+            </span>
+          </div>
+
+          <p className="mt-5 text-[2rem] leading-none text-primary">{badge}</p>
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[120px_1fr_460px]">
@@ -100,32 +127,34 @@ export default function TripDetailPage({
           </div>
 
           <article className="theme-panel order-3 p-6">
-            <p className="font-serif text-xs uppercase tracking-[0.24em] text-primary">
-              {location}
-            </p>
-            <h1 className="mt-3 font-serif text-3xl font-semibold tracking-wide text-foreground">
-              {title}
-            </h1>
+            <div className="hidden sm:block">
+              <p className="font-serif text-xs uppercase tracking-[0.24em] text-primary">
+                {location}
+              </p>
+              <h1 className="mt-3 font-serif text-3xl font-semibold tracking-wide text-foreground">
+                {title}
+              </h1>
 
-            <div className="mt-3 flex flex-wrap items-center gap-4 text-sm">
-              <span className="font-medium text-emerald-600 dark:text-emerald-300">
-                Prontamente
-              </span>
-              <span className="text-muted-foreground">{location}</span>
-              <span className="text-primary">5 estrellas</span>
-              <span className="text-muted-foreground">{reviews} opiniones</span>
+              <div className="mt-3 flex flex-wrap items-center gap-4 text-sm">
+                <span className="font-medium text-emerald-600 dark:text-emerald-300">
+                  Prontamente
+                </span>
+                <span className="text-muted-foreground">{location}</span>
+                <span className="text-primary">5 estrellas</span>
+                <span className="text-muted-foreground">{reviews} opiniones</span>
+              </div>
+
+              <div className="mt-5 text-4xl font-semibold tracking-tight text-foreground">
+                Desde {priceCop}
+                <span className="ml-3 text-xl font-normal text-muted-foreground">
+                  | USD ({priceUsd})
+                </span>
+              </div>
+
+              <p className="mt-5 text-2xl text-primary">{badge}</p>
             </div>
 
-            <div className="mt-5 text-4xl font-semibold tracking-tight text-foreground">
-              Desde {priceCop}
-              <span className="ml-3 text-xl font-normal text-muted-foreground">
-                | USD ({priceUsd})
-              </span>
-            </div>
-
-            <p className="mt-5 text-2xl text-primary">{badge}</p>
-
-            <ul className="mt-5 space-y-2 text-base leading-tight text-muted-foreground sm:text-lg">
+            <ul className="space-y-2 text-base leading-tight text-muted-foreground sm:mt-5 sm:text-lg">
               {highlights.map((item) => (
                 <li key={item}>- {item}</li>
               ))}
