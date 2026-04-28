@@ -14,9 +14,10 @@ export default function LlanosOrientalesPage() {
       title="Llanos Orientales"
       location="Orinoquia Colombiana"
       reviews={6}
-      priceCop="2.900.000"
-      priceUsd="1450"
-      badge="Aventura de rio"
+      priceCop="4.999.999"
+      priceUsd="1250"
+      badge="Rio Orinoco, Bita y Juriepe"
+      statusLabel="Disponible"
       highlights={[
         "6 dias 6 noches",
         "Minimo 8 viajeros por grupo",

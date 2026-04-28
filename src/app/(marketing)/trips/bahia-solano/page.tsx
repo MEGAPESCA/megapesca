@@ -15,7 +15,7 @@ export default function BahiaSolanoPage() {
       location="Costa Pacifica"
       reviews={8}
       priceCop="3.500.000"
-      priceUsd="1900"
+      priceUsd="875"
       badge="Tendencia"
       highlights={[
         "5 dias 4 noches",

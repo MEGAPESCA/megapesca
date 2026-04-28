@@ -15,7 +15,7 @@ export default function TournamentPage() {
       location="Santander"
       reviews={7}
       priceCop="750.000"
-      priceUsd="1250"
+      priceUsd="188"
       badge={"3\u00B0 Edici\u00F3n 2026"}
       highlights={[
         "2 d\u00EDas 1 noche.",
