@@ -55,7 +55,7 @@ export default function Home() {
         linksByTitle={{
           "Bahia Solano": "/trips/bahia-solano",
           "Llanos Orientales": "/trips/llanos-orientales",
-          Topocoro: "/trips/topocoro",
+          Tournament: "/trips/tournament",
         }}
       />
 
