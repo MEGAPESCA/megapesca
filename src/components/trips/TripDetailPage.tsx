@@ -77,7 +77,16 @@ export default function TripDetailPage({
               Prontamente
             </span>
             <span className="text-muted-foreground">{location}</span>
-            <span className="text-primary">5 estrellas</span>
+              <span
+                className="flex items-center gap-1 text-primary"
+                aria-label="Calificacion de 5 estrellas"
+              >
+                <span aria-hidden="true">{"\u2605"}</span>
+                <span aria-hidden="true">{"\u2605"}</span>
+                <span aria-hidden="true">{"\u2605"}</span>
+                <span aria-hidden="true">{"\u2605"}</span>
+                <span aria-hidden="true">{"\u2605"}</span>
+              </span>
             <span className="text-muted-foreground">{reviews} opiniones</span>
           </div>
 
@@ -140,7 +149,16 @@ export default function TripDetailPage({
                   Prontamente
                 </span>
                 <span className="text-muted-foreground">{location}</span>
-                <span className="text-primary">5 estrellas</span>
+                <span
+                  className="flex items-center gap-1 text-primary"
+                  aria-label="Calificacion de 5 estrellas"
+                >
+                  <span aria-hidden="true">{"\u2605"}</span>
+                  <span aria-hidden="true">{"\u2605"}</span>
+                  <span aria-hidden="true">{"\u2605"}</span>
+                  <span aria-hidden="true">{"\u2605"}</span>
+                  <span aria-hidden="true">{"\u2605"}</span>
+                </span>
                 <span className="text-muted-foreground">{reviews} opiniones</span>
               </div>
 
