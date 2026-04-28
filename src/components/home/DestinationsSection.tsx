@@ -14,7 +14,7 @@ const DESTINATIONS = [
     images: ["/launch/homellanos1.jpeg", "/launch/homellanos2.jpeg", "/launch/homellanos3.jpeg"],
   },
   {
-    title: "Topocoro",
+    title: "Tournament",
     images: ["/launch/hometopocoro1.jpg", "/launch/hometopocoro2.jpeg", "/launch/hometopocoro3.jpeg"],
   },
 ];
