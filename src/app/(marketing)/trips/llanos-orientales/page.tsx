@@ -17,7 +17,6 @@ export default function LlanosOrientalesPage() {
       priceCop="4.999.999"
       priceUsd="1250"
       badge="Rio Orinoco, Bita y Juriepe"
-      statusLabel="Disponible"
       highlights={[
         "6 dias 6 noches",
         "Minimo 8 viajeros por grupo",
