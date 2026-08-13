@@ -6,17 +6,29 @@ import Link from "next/link";
 
 import MarketingHeader from "@/components/layout/MarketingHeader";
 
+type ReviewTestimonial = {
+  quote: string;
+  author: string;
+  meta?: string;
+};
+
 type TripDetailPageProps = {
   title: string;
   location: string;
   reviews: number;
-  priceCop: string;
-  priceUsd: string;
+  ratingValue?: number;
+  statusLabel?: string;
+  reviewsLabel?: string;
+  priceCop: number;
+  priceUsd: number;
+  priceReferenceLabel?: string;
   badge: string;
   highlights: string[];
   description: string[];
   availabilityMessage: string;
   images: string[];
+  reviewTestimonials?: ReviewTestimonial[];
+  reserveButtonLabel?: string;
 };
 
 function getReserveHref(title: string, qty: number) {
@@ -33,23 +45,49 @@ function getReserveHref(title: string, qty: number) {
   return `https://wa.me/${phone}?text=${text}`;
 }
 
+function formatCop(value: number) {
+  return new Intl.NumberFormat("es-CO", {
+    style: "currency",
+    currency: "COP",
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
+function formatUsd(value: number) {
+  return new Intl.NumberFormat("en-US", {
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
 export default function TripDetailPage({
   title,
   location,
   reviews,
+  ratingValue = 5,
+  statusLabel = "Prontamente",
+  reviewsLabel,
   priceCop,
   priceUsd,
+  priceReferenceLabel,
   badge,
   highlights,
   description,
   availabilityMessage,
   images,
+  reviewTestimonials = [],
+  reserveButtonLabel = "RESERVAR AHORA",
 }: TripDetailPageProps) {
   const [activeImage, setActiveImage] = useState(0);
   const [qty, setQty] = useState(1);
 
   const reserveHref = useMemo(() => getReserveHref(title, qty), [qty, title]);
   const reserveIsExternal = reserveHref.startsWith("https://");
+  const formattedCop = useMemo(() => formatCop(priceCop), [priceCop]);
+  const formattedUsd = useMemo(() => formatUsd(priceUsd), [priceUsd]);
+  const roundedRating = Math.max(0, Math.min(5, Math.round(ratingValue)));
+  const ratingText = ratingValue.toFixed(1);
+  const reviewCountLabel =
+    reviewsLabel ?? `${reviews} ${reviews === 1 ? "opinion" : "opiniones"}`;
 
   return (
     <main className="theme-page min-h-screen">
@@ -74,27 +112,43 @@ export default function TripDetailPage({
 
           <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
             <span className="font-medium text-emerald-600 dark:text-emerald-300">
-              Prontamente
+              {statusLabel}
             </span>
             <span className="text-muted-foreground">{location}</span>
-              <span
-                className="flex items-center gap-1 text-primary"
-                aria-label="Calificacion de 5 estrellas"
-              >
-                <span aria-hidden="true">{"\u2605"}</span>
-                <span aria-hidden="true">{"\u2605"}</span>
-                <span aria-hidden="true">{"\u2605"}</span>
-                <span aria-hidden="true">{"\u2605"}</span>
-                <span aria-hidden="true">{"\u2605"}</span>
-              </span>
-            <span className="text-muted-foreground">{reviews} opiniones</span>
+            <span
+              className="flex items-center gap-1 text-primary"
+              aria-label={`Calificacion de ${ratingText} sobre 5`}
+            >
+              {Array.from({ length: 5 }, (_, idx) => (
+                <span
+                  key={`mobile-star-${idx}`}
+                  aria-hidden="true"
+                  className={idx < roundedRating ? "" : "opacity-30"}
+                >
+                  {"\u2605"}
+                </span>
+              ))}
+            </span>
+            <span className="text-muted-foreground">
+              {ratingText} · {reviewCountLabel}
+            </span>
           </div>
 
-          <div className="mt-5 text-[2.2rem] font-semibold leading-none tracking-tight text-foreground">
-            Desde {priceCop}
-            <span className="mt-2 block text-2xl font-normal text-muted-foreground">
-              USD ({priceUsd})
+          <div className="mt-5">
+            <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+              Precio por viajero
+            </p>
+            <div className="mt-2 text-[2.2rem] font-semibold leading-none tracking-tight text-foreground">
+              Desde {formattedCop}
+            </div>
+            <span className="mt-3 inline-flex rounded-full border border-border bg-secondary/70 px-3 py-1 text-sm text-muted-foreground">
+              USD {formattedUsd} aprox.
             </span>
+            {priceReferenceLabel ? (
+              <p className="mt-3 text-xs leading-6 text-muted-foreground">
+                {priceReferenceLabel}
+              </p>
+            ) : null}
           </div>
 
           <p className="mt-5 text-[2rem] leading-none text-primary">{badge}</p>
@@ -146,27 +200,43 @@ export default function TripDetailPage({
 
               <div className="mt-3 flex flex-wrap items-center gap-4 text-sm">
                 <span className="font-medium text-emerald-600 dark:text-emerald-300">
-                  Prontamente
+                  {statusLabel}
                 </span>
                 <span className="text-muted-foreground">{location}</span>
                 <span
                   className="flex items-center gap-1 text-primary"
-                  aria-label="Calificacion de 5 estrellas"
+                  aria-label={`Calificacion de ${ratingText} sobre 5`}
                 >
-                  <span aria-hidden="true">{"\u2605"}</span>
-                  <span aria-hidden="true">{"\u2605"}</span>
-                  <span aria-hidden="true">{"\u2605"}</span>
-                  <span aria-hidden="true">{"\u2605"}</span>
-                  <span aria-hidden="true">{"\u2605"}</span>
+                  {Array.from({ length: 5 }, (_, idx) => (
+                    <span
+                      key={`desktop-star-${idx}`}
+                      aria-hidden="true"
+                      className={idx < roundedRating ? "" : "opacity-30"}
+                    >
+                      {"\u2605"}
+                    </span>
+                  ))}
                 </span>
-                <span className="text-muted-foreground">{reviews} opiniones</span>
+                <span className="text-muted-foreground">
+                  {ratingText} · {reviewCountLabel}
+                </span>
               </div>
 
-              <div className="mt-5 text-4xl font-semibold tracking-tight text-foreground">
-                Desde {priceCop}
-                <span className="ml-3 text-xl font-normal text-muted-foreground">
-                  | USD ({priceUsd})
+              <div className="mt-5">
+                <p className="text-xs uppercase tracking-[0.24em] text-muted-foreground">
+                  Precio por viajero
+                </p>
+                <div className="mt-2 text-4xl font-semibold tracking-tight text-foreground">
+                  Desde {formattedCop}
+                </div>
+                <span className="mt-3 inline-flex rounded-full border border-border bg-secondary/70 px-3 py-1 text-sm text-muted-foreground">
+                  USD {formattedUsd} aprox.
                 </span>
+                {priceReferenceLabel ? (
+                  <p className="mt-3 text-xs leading-6 text-muted-foreground">
+                    {priceReferenceLabel}
+                  </p>
+                ) : null}
               </div>
 
               <p className="mt-5 text-2xl text-primary">{badge}</p>
@@ -183,6 +253,36 @@ export default function TripDetailPage({
                 <p key={paragraph}>{paragraph}</p>
               ))}
             </div>
+
+            {reviewTestimonials.length > 0 ? (
+              <section className="mt-8">
+                <p className="font-serif text-xs uppercase tracking-[0.24em] text-primary">
+                  Lo que dicen los viajeros
+                </p>
+                <div className="mt-4 grid gap-4">
+                  {reviewTestimonials.map((testimonial) => (
+                    <div
+                      key={`${testimonial.author}-${testimonial.quote}`}
+                      className="rounded-2xl border border-border bg-secondary/50 p-4"
+                    >
+                      <p className="text-sm leading-7 text-foreground/90">
+                        &ldquo;{testimonial.quote}&rdquo;
+                      </p>
+                      <div className="mt-3">
+                        <p className="text-sm font-medium text-foreground">
+                          {testimonial.author}
+                        </p>
+                        {testimonial.meta ? (
+                          <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
+                            {testimonial.meta}
+                          </p>
+                        ) : null}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ) : null}
 
             <div className="mt-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-center text-lg text-emerald-700 dark:text-emerald-300 sm:text-2xl">
               {availabilityMessage}
@@ -213,7 +313,7 @@ export default function TripDetailPage({
                 target={reserveIsExternal ? "_blank" : undefined}
                 rel={reserveIsExternal ? "noopener noreferrer" : undefined}
               >
-                RESERVAR AHORA
+                {reserveButtonLabel}
               </a>
             </div>
           </article>

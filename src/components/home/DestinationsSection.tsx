@@ -1,25 +1,16 @@
 import DestinationCard from "@/components/home/DestinationCard";
+import {
+  getTripDestinations,
+  type TripDestinationItem,
+} from "@/lib/trips/catalog";
 
 type DestinationsSectionProps = {
-  linksByTitle?: Record<string, string>;
+  destinations?: TripDestinationItem[];
 };
 
-const DESTINATIONS = [
-  {
-    title: "Bahia Solano",
-    images: ["/launch/homebahia1.JPG", "/launch/homebahia2.JPG", "/launch/homebahia3.JPG"],
-  },
-  {
-    title: "Llanos Orientales",
-    images: ["/launch/homellanos1.jpeg", "/launch/homellanos2.jpeg", "/launch/homellanos3.jpeg"],
-  },
-  {
-    title: "Tournament",
-    images: ["/launch/hometopocoro1.jpg", "/launch/hometopocoro2.jpeg", "/launch/hometopocoro3.jpeg"],
-  },
-];
-
-export default function DestinationsSection({ linksByTitle }: DestinationsSectionProps) {
+export default function DestinationsSection({
+  destinations = getTripDestinations(),
+}: DestinationsSectionProps) {
   return (
     <section className="mx-auto w-full max-w-6xl px-4 py-14 sm:py-16">
       <div className="mb-8 text-center sm:mb-10">
@@ -33,12 +24,12 @@ export default function DestinationsSection({ linksByTitle }: DestinationsSectio
 
       <div className="md:hidden">
         <div className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-3">
-          {DESTINATIONS.map((destination) => (
+          {destinations.map((destination) => (
             <div key={destination.title} className="min-w-[84%] snap-center first:pl-0 last:pr-1">
               <DestinationCard
                 title={destination.title}
                 images={destination.images}
-                href={linksByTitle?.[destination.title]}
+                href={destination.href}
               />
             </div>
           ))}
@@ -46,12 +37,12 @@ export default function DestinationsSection({ linksByTitle }: DestinationsSectio
       </div>
 
       <div className="hidden auto-rows-fr gap-5 md:grid md:grid-cols-2 lg:grid-cols-3">
-        {DESTINATIONS.map((destination) => (
+        {destinations.map((destination) => (
           <DestinationCard
             key={destination.title}
             title={destination.title}
             images={destination.images}
-            href={linksByTitle?.[destination.title]}
+            href={destination.href}
           />
         ))}
       </div>

@@ -3,6 +3,7 @@
 import DestinationsSection from "@/components/home/DestinationsSection";
 import MarketingHeader from "@/components/layout/MarketingHeader";
 import TripsHero from "@/components/trips/TripsHero";
+import { getTripDestinations } from "@/lib/trips/catalog";
 
 export default function TripsPage() {
   return (
@@ -12,13 +13,7 @@ export default function TripsPage() {
       <TripsHero />
 
       <div id="destinos">
-        <DestinationsSection
-          linksByTitle={{
-            "Bahia Solano": "/trips/bahia-solano",
-            "Llanos Orientales": "/trips/llanos-orientales",
-            Tournament: "/trips/tournament",
-          }}
-        />
+        <DestinationsSection destinations={getTripDestinations()} />
       </div>
     </main>
   );
