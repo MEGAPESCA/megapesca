@@ -1,6 +1,10 @@
 import { getTripPricing } from "@/lib/trips/pricing";
 
-export type TripSlug = "bahia-solano" | "llanos-orientales" | "tournament";
+export type TripSlug =
+  | "bahia-solano"
+  | "llanos-orientales"
+  | "tournament"
+  | "la-liga";
 
 export type TripDestinationItem = {
   slug: TripSlug;
@@ -74,6 +78,7 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
       "Minimo 8 viajeros por grupo",
       "Temporada de enero a marzo",
       "Experiencia autentica en los llanos",
+      "Campamento al frente del rio",
     ],
     description: [
       "En el corazon de los Llanos Orientales te espera un escenario donde la naturaleza se muestra sin filtros: vasta, salvaje y absolutamente imponente. Aqui, las llanuras infinitas se funden con rios caudalosos que serpentean entre paisajes virgenes, creando el habitat perfecto para una de las experiencias de pesca mas intensas de Colombia. Cada jornada es un encuentro directo con lo autentico, donde el sonido del agua, el viento y la vida silvestre marcan el ritmo de la aventura.",
@@ -116,6 +121,37 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
       "/launch/hometopocoro1.jpg",
       "/launch/hometopocoro2.jpeg",
       "/launch/hometopocoro3.jpeg",
+    ],
+  },
+  "la-liga": {
+    slug: "la-liga",
+    title: "La Liga",
+    location: "Embalse Penol-Guatape",
+    reviews: 0,
+    ratingValue: 0,
+    statusLabel: "Prontamente",
+    priceCop: 180_000,
+    badge: "Proximo encuentro 3ra edicion 2027",
+    highlights: [
+      "2 temporadas y 1 final",
+      "Pesca de Black Bass",
+      "Embalse Penol-Guatape",
+      "Proximo encuentro 3ra edicion 2027",
+    ],
+    description: [
+      "La Liga by Mega Pesca nace como un formato pensado para quienes disfrutan la competencia, la tecnica y la emocion de medirse jornada tras jornada en escenarios que exigen lectura, precision y constancia. No es solo un encuentro de pesca: es una temporada construida para reunir a quienes viven este deporte con mentalidad, disciplina y pasion real.",
+      "En el Embalse Penol-Guatape, el Black Bass encuentra el escenario perfecto para jornadas activas, decisiones rapidas y capturas que se ganan lance a lance. Cada fecha mezcla estrategia, comunidad y adrenalina, creando un ambiente donde el nivel sube y cada participante siente que hace parte de algo que vale la pena seguir.",
+      "Con dos temporadas y una gran final, La Liga busca consolidarse como una de las citas mas atractivas para la pesca deportiva de Black Bass en Colombia. Es una propuesta para competir, compartir y volver una y otra vez, con el sello de Mega Pesca y una experiencia pensada para dejar huella desde el primer lanzamiento.",
+    ],
+    availabilityMessage:
+      "Inscripciones proximamente para la 3ra edicion 2027.",
+    reserveButtonLabel: "QUIERO MI CUPO",
+    reviewTestimonials: [],
+    images: [
+      "/launch/homelaliga1.jpg",
+      "/launch/homelaliga2.jpg",
+      "/launch/homelaliga3.jpg",
+      "/launch/homelaliga4.jpg",
     ],
   },
 };
