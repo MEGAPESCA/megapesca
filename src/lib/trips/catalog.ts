@@ -6,7 +6,8 @@ export type TripSlug =
   | "tournament"
   | "la-liga"
   | "santo-domingo"
-  | "punchina";
+  | "punchina"
+  | "jaguas";
 
 export type TripDestinationItem = {
   slug: TripSlug;
@@ -212,6 +213,38 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     description: [
       "Punchina es una salida pensada para quienes disfrutan la pesca en embalses del Oriente Antioqueno, en un entorno de montana donde el agua, la vegetacion y la calma del paisaje crean una jornada distinta para desconectarse y concentrarse en la pesca real.",
       "En este escenario de San Carlos es posible encontrarse con especies como Mojarra, Morrudo y Black Bass, en una experiencia grupal de un dia que combina recorrido en bote, lectura del agua y acompanamiento local. Es una opcion ideal para quienes quieren vivir una jornada completa, cercana y bien organizada, con el sello de Mega Pesca.",
+    ],
+    includedItems: [
+      "Transporte desde Rionegro Ant",
+      "Pesca en bote, motor y guia local",
+      "Desayuno y almuerzo tipo fiambre",
+      "Trofeos y reconocimientos",
+      "Poliza de viaje",
+    ],
+    availabilityMessage:
+      "Salida recomendada. Reserva tu jornada con anticipacion.",
+    reserveButtonLabel: "RESERVAR JORNADA",
+    reviewTestimonials: [],
+    images: ["/launch/01.jpg", "/launch/04.jpg", "/launch/05.jpg"],
+  },
+  jaguas: {
+    slug: "jaguas",
+    title: "Jaguas",
+    location: "Oriente Antioqueno",
+    reviews: 0,
+    ratingValue: 0,
+    statusLabel: "Disponible",
+    priceCop: 260_000,
+    badge: "Embalses Oriente",
+    highlights: [
+      "1 dia de pesca",
+      "Viaje grupal",
+      "Pesca en embalse",
+      "Capturas de Mojarra, Morrudo y Black Bass",
+    ],
+    description: [
+      "Jaguas es una salida pensada para quienes quieren vivir una jornada de pesca en embalse dentro del Oriente Antioqueno, rodeados de montanas, agua tranquila y escenarios que invitan a leer cada movimiento con paciencia y estrategia.",
+      "En este entorno de San Roque es posible encontrarse con especies como Mojarra, Morrudo y Black Bass, en una experiencia grupal de un dia que combina recorrido en bote, guia local y el sello cercano de Mega Pesca. Es una opcion ideal para quienes buscan una salida bien organizada, accesible y con verdadera conexion con la pesca deportiva.",
     ],
     includedItems: [
       "Transporte desde Rionegro Ant",
