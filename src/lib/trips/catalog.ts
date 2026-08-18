@@ -7,7 +7,8 @@ export type TripSlug =
   | "la-liga"
   | "santo-domingo"
   | "punchina"
-  | "jaguas";
+  | "jaguas"
+  | "la-miel";
 
 export type TripDestinationItem = {
   slug: TripSlug;
@@ -255,6 +256,39 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     ],
     availabilityMessage:
       "Salida recomendada. Reserva tu jornada con anticipacion.",
+    reserveButtonLabel: "RESERVAR JORNADA",
+    reviewTestimonials: [],
+    images: ["/launch/01.jpg", "/launch/04.jpg", "/launch/05.jpg"],
+  },
+  "la-miel": {
+    slug: "la-miel",
+    title: "La Miel",
+    location: "Sonson Antioquia",
+    reviews: 0,
+    ratingValue: 0,
+    statusLabel: "Disponible",
+    priceCop: 680_000,
+    badge: "Temporada de verano",
+    highlights: [
+      "1 dia de pesca",
+      "Viaje grupal",
+      "Pesca en rio",
+      "Temporada de verano",
+    ],
+    description: [
+      "Rio La Miel es una salida pensada para quienes quieren vivir una jornada de pesca en uno de esos escenarios donde el paisaje pesa tanto como la captura. Entre montanas, cascadas y naturaleza salvaje, este rio antioqueno de caudal medio propone una experiencia activa, visualmente poderosa y llena de conexion con el entorno.",
+      "En sus aguas es posible encontrarse con especies como Mojarra, Picuda y Dorada, en una experiencia grupal que combina recorrido, lectura del rio y acompanamiento local. La Miel es ideal para quienes buscan una salida distinta, con el equilibrio entre comodidad, aventura y una pesca autentica con el sello de Mega Pesca.",
+    ],
+    includedItems: [
+      "Transporte desde Rionegro Ant",
+      "Pesca en bote, motor y guia local",
+      "1 desayuno, 1 almuerzo y 1 cena tipo fiambre",
+      "Alojamiento 1 noche en cabana al frente del rio",
+      "Trofeos y reconocimientos",
+      "Poliza de viaje",
+    ],
+    availabilityMessage:
+      "Temporada recomendada en verano. Reserva tu jornada con anticipacion.",
     reserveButtonLabel: "RESERVAR JORNADA",
     reviewTestimonials: [],
     images: ["/launch/01.jpg", "/launch/04.jpg", "/launch/05.jpg"],
