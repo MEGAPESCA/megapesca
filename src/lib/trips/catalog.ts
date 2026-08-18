@@ -17,6 +17,8 @@ export type TripCatalogItem = {
   slug: TripSlug;
   title: string;
   location: string;
+  isListed?: boolean;
+  isHomeFeatured?: boolean;
   reviews: number;
   ratingValue?: number;
   statusLabel?: string;
@@ -39,6 +41,7 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     slug: "bahia-solano",
     title: "Bahia Solano",
     location: "Costa Pacifica",
+    isListed: false,
     reviews: 8,
     ratingValue: 5,
     priceCop: 3_500_000,
@@ -68,6 +71,7 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     slug: "llanos-orientales",
     title: "Llanos Orientales",
     location: "Orinoquia Colombiana",
+    isHomeFeatured: true,
     reviews: 6,
     ratingValue: 5,
     statusLabel: "Disponible",
@@ -97,6 +101,7 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     slug: "tournament",
     title: "Tournament",
     location: "Santander",
+    isHomeFeatured: true,
     reviews: 7,
     ratingValue: 5,
     priceCop: 750_000,
@@ -127,6 +132,7 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     slug: "la-liga",
     title: "La Liga",
     location: "Embalse Penol-Guatape",
+    isHomeFeatured: true,
     reviews: 0,
     ratingValue: 0,
     statusLabel: "Prontamente",
@@ -161,12 +167,36 @@ export function getTripHref(slug: TripSlug) {
 }
 
 export function getTripDestinations(): TripDestinationItem[] {
-  return Object.values(TRIPS_CATALOG).map((trip) => ({
-    slug: trip.slug,
-    title: trip.title,
-    href: getTripHref(trip.slug),
-    images: trip.images,
-  }));
+  return Object.values(TRIPS_CATALOG)
+    .filter((trip) => trip.isListed !== false)
+    .map((trip) => ({
+      slug: trip.slug,
+      title: trip.title,
+      href: getTripHref(trip.slug),
+      images: trip.images,
+    }));
+}
+
+export function getHomeTripDestinations(): TripDestinationItem[] {
+  return Object.values(TRIPS_CATALOG)
+    .filter((trip) => trip.isListed !== false && trip.isHomeFeatured === true)
+    .map((trip) => ({
+      slug: trip.slug,
+      title: trip.title,
+      href: getTripHref(trip.slug),
+      images: trip.images,
+    }));
+}
+
+export function getSecondaryTripDestinations(): TripDestinationItem[] {
+  return Object.values(TRIPS_CATALOG)
+    .filter((trip) => trip.isListed !== false && trip.isHomeFeatured !== true)
+    .map((trip) => ({
+      slug: trip.slug,
+      title: trip.title,
+      href: getTripHref(trip.slug),
+      images: trip.images,
+    }));
 }
 
 export async function getTripDetail(slug: TripSlug) {

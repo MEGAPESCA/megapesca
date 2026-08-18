@@ -9,7 +9,7 @@ import ShopPromoSection from "@/components/home/ShopPromoSection";
 import CommunityWelcomePopup from "@/components/common/CommunityWelcomePopup";
 import WhatsAppFloatingButton from "@/components/common/WhatsAppFloatingButton";
 import MarketingHeader from "@/components/layout/MarketingHeader";
-import { getTripDestinations } from "@/lib/trips/catalog";
+import { getHomeTripDestinations } from "@/lib/trips/catalog";
 
 const HOME_SLIDES: HomeSlide[] = [
   {
@@ -52,7 +52,7 @@ export default function Home() {
 
       <HomeCarousel slides={HOME_SLIDES} />
 
-      <DestinationsSection destinations={getTripDestinations()} />
+      <DestinationsSection destinations={getHomeTripDestinations()} />
 
       <section className="pb-14 sm:pb-16">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-4 px-4">
