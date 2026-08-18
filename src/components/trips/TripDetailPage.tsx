@@ -25,6 +25,7 @@ type TripDetailPageProps = {
   badge: string;
   highlights: string[];
   description: string[];
+  includedItems?: string[];
   availabilityMessage: string;
   images: string[];
   reviewTestimonials?: ReviewTestimonial[];
@@ -72,6 +73,7 @@ export default function TripDetailPage({
   badge,
   highlights,
   description,
+  includedItems = [],
   availabilityMessage,
   images,
   reviewTestimonials = [],
@@ -247,6 +249,31 @@ export default function TripDetailPage({
                 <li key={item}>- {item}</li>
               ))}
             </ul>
+
+            {includedItems.length > 0 ? (
+              <section className="mt-8">
+                <p className="font-serif text-xs uppercase tracking-[0.24em] text-primary">
+                  Tu experiencia incluye
+                </p>
+                <div className="mt-4 grid gap-3 md:grid-cols-2">
+                  {includedItems.map((item, index) => (
+                    <div
+                      key={item}
+                      className="rounded-2xl border border-border bg-secondary/45 px-4 py-4 shadow-[0_16px_36px_rgba(0,0,0,0.12)] md:min-h-[112px]"
+                    >
+                      <div className="flex items-start gap-3">
+                        <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-primary/35 bg-primary/10 text-xs font-semibold tracking-[0.18em] text-primary">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <p className="text-sm leading-6 text-foreground/90 sm:text-[15px]">
+                          {item}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            ) : null}
 
             <div className="mt-6 space-y-4 text-[15px] leading-8 text-muted-foreground">
               {description.map((paragraph) => (

@@ -4,7 +4,8 @@ export type TripSlug =
   | "bahia-solano"
   | "llanos-orientales"
   | "tournament"
-  | "la-liga";
+  | "la-liga"
+  | "santo-domingo";
 
 export type TripDestinationItem = {
   slug: TripSlug;
@@ -25,6 +26,7 @@ export type TripCatalogItem = {
   badge: string;
   highlights: string[];
   description: string[];
+  includedItems?: string[];
   availabilityMessage: string;
   images: string[];
   reserveButtonLabel?: string;
@@ -159,6 +161,37 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
       "/launch/homelaliga3.jpg",
       "/launch/homelaliga4.jpg",
     ],
+  },
+  "santo-domingo": {
+    slug: "santo-domingo",
+    title: "Santo Domingo",
+    location: "Oriente Antioqueno",
+    reviews: 0,
+    ratingValue: 0,
+    statusLabel: "Disponible",
+    priceCop: 160_000,
+    badge: "Temporada de Verano",
+    highlights: [
+      "Caminata de rio",
+      "Pesca de sabaleta",
+      "1 dia de pesca",
+      "Viaje grupal",
+    ],
+    description: [
+      "Santo Domingo es una salida pensada para quienes disfrutan la pesca en escenarios vivos, tecnicos y profundamente naturales. En el Oriente Antioqueno, este rio de caudal medio y aguas cristalinas propone una jornada distinta: una experiencia de lectura del entorno, precision y movimiento constante, donde cada tramo exige atencion real y buena toma de decisiones.",
+      "La ruta atraviesa rocas lisas, pasos boscosos y sectores de agua virgen que convierten la caminata en parte esencial de la experiencia. Aqui la sabaleta, especie nativa y emblemática de Colombia, no se pesca por azar: se gana con astucia, tecnica y paciencia. Es una salida corta en duracion, pero intensa en sensaciones, ideal para quienes quieren conectar con un rio autentico y una pesca fina en medio del paisaje antioqueno.",
+    ],
+    includedItems: [
+      "Transporte desde Rionegro Ant",
+      "Desayuno y almuerzo tipo fiambre",
+      "Trofeos y reconocimientos",
+      "Poliza viajera",
+    ],
+    availabilityMessage:
+      "Salida recomendada en temporada de verano. Reserva tu jornada con anticipacion.",
+    reserveButtonLabel: "RESERVAR JORNADA",
+    reviewTestimonials: [],
+    images: ["/launch/01.jpg", "/launch/04.jpg", "/launch/05.jpg"],
   },
 };
 
