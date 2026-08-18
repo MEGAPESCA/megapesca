@@ -5,7 +5,8 @@ export type TripSlug =
   | "llanos-orientales"
   | "tournament"
   | "la-liga"
-  | "santo-domingo";
+  | "santo-domingo"
+  | "punchina";
 
 export type TripDestinationItem = {
   slug: TripSlug;
@@ -143,7 +144,7 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     highlights: [
       "2 temporadas y 1 final",
       "Pesca de Black Bass",
-      "Embalse Penol-Guatape",
+      "Encuentro competitivo en embalse",
       "Proximo encuentro 3ra edicion 2027",
     ],
     description: [
@@ -189,6 +190,38 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     ],
     availabilityMessage:
       "Salida recomendada en temporada de verano. Reserva tu jornada con anticipacion.",
+    reserveButtonLabel: "RESERVAR JORNADA",
+    reviewTestimonials: [],
+    images: ["/launch/01.jpg", "/launch/04.jpg", "/launch/05.jpg"],
+  },
+  punchina: {
+    slug: "punchina",
+    title: "Punchina",
+    location: "Oriente Antioqueno",
+    reviews: 0,
+    ratingValue: 0,
+    statusLabel: "Disponible",
+    priceCop: 250_000,
+    badge: "Embalses Oriente",
+    highlights: [
+      "1 dia de pesca",
+      "Viaje grupal",
+      "Pesca en embalse",
+      "Capturas de Mojarra, Morrudo y Black Bass",
+    ],
+    description: [
+      "Punchina es una salida pensada para quienes disfrutan la pesca en embalses del Oriente Antioqueno, en un entorno de montana donde el agua, la vegetacion y la calma del paisaje crean una jornada distinta para desconectarse y concentrarse en la pesca real.",
+      "En este escenario de San Carlos es posible encontrarse con especies como Mojarra, Morrudo y Black Bass, en una experiencia grupal de un dia que combina recorrido en bote, lectura del agua y acompanamiento local. Es una opcion ideal para quienes quieren vivir una jornada completa, cercana y bien organizada, con el sello de Mega Pesca.",
+    ],
+    includedItems: [
+      "Transporte desde Rionegro Ant",
+      "Pesca en bote, motor y guia local",
+      "Desayuno y almuerzo tipo fiambre",
+      "Trofeos y reconocimientos",
+      "Poliza de viaje",
+    ],
+    availabilityMessage:
+      "Salida recomendada. Reserva tu jornada con anticipacion.",
     reserveButtonLabel: "RESERVAR JORNADA",
     reviewTestimonials: [],
     images: ["/launch/01.jpg", "/launch/04.jpg", "/launch/05.jpg"],

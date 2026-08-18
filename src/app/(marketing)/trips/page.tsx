@@ -32,14 +32,15 @@ export default function TripsPage() {
 
           <div className="mt-10 text-center">
             <p className="font-serif text-[11px] font-medium uppercase tracking-[0.25em] text-primary">
-              Proximas experiencias
+              Infinitas regiones
             </p>
             <h2 className="mt-2 text-2xl font-serif font-semibold tracking-wide text-foreground sm:text-3xl">
-              Nuevos viajes Megapesca
+              Viajes Megapesca
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
-              Debajo de nuestros viajes insignia iremos sumando nuevas rutas,
-              torneos y expediciones seleccionadas para la comunidad.
+              Colombia, el pais de la belleza, es un territorio rico en
+              biodiversidad. Sus cuencas y sus afluentes hacen de nuestro pais
+              un lugar maravilloso por recorrer.
             </p>
           </div>
 
