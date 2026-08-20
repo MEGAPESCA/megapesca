@@ -23,13 +23,20 @@ export default function TripsPage() {
         <DestinationsSection destinations={featuredTrips} />
       </div>
 
-      <section className="pb-16 pt-2 sm:pb-20">
+      <section aria-hidden="true" className="pb-2 pt-4 sm:pb-4 sm:pt-6">
         <div className="mx-auto w-full max-w-6xl px-4">
-          <div className="relative">
-            <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/65 to-transparent" />
-            <div className="absolute left-1/2 top-1/2 h-10 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/30 blur-3xl" />
+          <div className="relative flex items-center justify-center">
+            <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/75 to-transparent" />
+            <div className="absolute h-12 w-48 rounded-full bg-primary/25 blur-3xl" />
+            <div className="absolute flex items-center justify-center">
+              <span className="h-2.5 w-16 rounded-full bg-primary shadow-[0_0_30px_rgba(245,186,74,0.55)]" />
+            </div>
           </div>
+        </div>
+      </section>
 
+      <section className="pb-16 pt-4 sm:pb-20">
+        <div className="mx-auto w-full max-w-6xl px-4">
           <div className="mt-10 text-center">
             <p className="font-serif text-[11px] font-medium uppercase tracking-[0.25em] text-primary">
               Infinitas regiones

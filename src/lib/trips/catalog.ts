@@ -97,9 +97,9 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     reserveButtonLabel: "RESERVAR VIAJE",
     reviewTestimonials: [],
     images: [
-      "/launch/homellanos1.jpeg",
-      "/launch/homellanos2.jpeg",
-      "/launch/homellanos3.jpeg",
+      "/launch/homellanos2.jpg",
+      "/launch/homellanos3.jpg",
+      "/launch/homellanos5.jpg",
     ],
   },
   tournament: {
@@ -128,9 +128,10 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     reserveButtonLabel: "SEPARAR CUPO",
     reviewTestimonials: [],
     images: [
-      "/launch/hometopocoro1.jpg",
-      "/launch/hometopocoro2.jpeg",
-      "/launch/hometopocoro3.jpeg",
+      "/launch/hometournament1.jpg",
+      "/launch/hometournament2.jpg",
+      "/launch/hometournament3.jpg",
+      "/launch/hometournament4.jpg",
     ],
   },
   "la-liga": {
@@ -163,6 +164,7 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
       "/launch/homelaliga2.jpg",
       "/launch/homelaliga3.jpg",
       "/launch/homelaliga4.jpg",
+      "/launch/homelaliga5.jpg",
     ],
   },
   "santo-domingo": {
@@ -226,7 +228,12 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
       "Salida recomendada. Reserva tu jornada con anticipacion.",
     reserveButtonLabel: "RESERVAR JORNADA",
     reviewTestimonials: [],
-    images: ["/launch/01.jpg", "/launch/04.jpg", "/launch/05.jpg"],
+    images: [
+      "/launch/homepunchina1.jpg",
+      "/launch/homepunchina2.jpg",
+      "/launch/homepunchina3.jpg",
+      "/launch/homepunchina4.jpg",
+    ],
   },
   jaguas: {
     slug: "jaguas",
@@ -258,7 +265,12 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
       "Salida recomendada. Reserva tu jornada con anticipacion.",
     reserveButtonLabel: "RESERVAR JORNADA",
     reviewTestimonials: [],
-    images: ["/launch/01.jpg", "/launch/04.jpg", "/launch/05.jpg"],
+    images: [
+      "/launch/homejaguas1.jpg",
+      "/launch/homejaguas2.jpg",
+      "/launch/homejaguas3.jpg",
+      "/launch/homejaguas4.jpg",
+    ],
   },
   "la-miel": {
     slug: "la-miel",
@@ -291,7 +303,12 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
       "Temporada recomendada en verano. Reserva tu jornada con anticipacion.",
     reserveButtonLabel: "RESERVAR JORNADA",
     reviewTestimonials: [],
-    images: ["/launch/01.jpg", "/launch/04.jpg", "/launch/05.jpg"],
+    images: [
+      "/launch/homeriolamiel1.jpg",
+      "/launch/homeriolamiel2.jpg",
+      "/launch/homeriolamiel3.jpg",
+      "/launch/homeriolamiel4.jpg",
+    ],
   },
 };
 
