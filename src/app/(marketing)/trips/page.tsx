@@ -52,35 +52,16 @@ export default function TripsPage() {
           </div>
 
           {upcomingTrips.length > 0 ? (
-            <>
-              <div className="mt-10 md:hidden">
-                <div className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-3">
-                  {upcomingTrips.map((destination) => (
-                    <div
-                      key={destination.title}
-                      className="min-w-[84%] snap-center first:pl-0 last:pr-1"
-                    >
-                      <DestinationCard
-                        title={destination.title}
-                        images={destination.images}
-                        href={destination.href}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-10 hidden auto-rows-fr gap-5 md:grid md:grid-cols-2 lg:grid-cols-3">
-                {upcomingTrips.map((destination) => (
-                  <DestinationCard
-                    key={destination.title}
-                    title={destination.title}
-                    images={destination.images}
-                    href={destination.href}
-                  />
-                ))}
-              </div>
-            </>
+            <div className="mt-10 grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {upcomingTrips.map((destination) => (
+                <DestinationCard
+                  key={destination.title}
+                  title={destination.title}
+                  images={destination.images}
+                  href={destination.href}
+                />
+              ))}
+            </div>
           ) : (
             <div className="theme-panel-soft mt-10 rounded-[28px] border border-primary/20 px-6 py-10 text-center">
               <p className="font-serif text-lg text-foreground sm:text-xl">
