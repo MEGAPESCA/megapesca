@@ -81,13 +81,20 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     ratingValue: 5,
     statusLabel: "Disponible",
     priceCop: 4_999_999,
-    badge: "Rio Orinoco, Bita y Juriepe",
+    badge: "Bita Alto y Rio Juriepe",
     highlights: [
-      "6 dias 6 noches",
-      "Minimo 8 viajeros por grupo",
-      "Temporada de enero a marzo",
-      "Experiencia autentica en los llanos",
+      "8 dias 7 noches",
+      "6 dias de pesca",
       "Campamento al frente del rio",
+      "Pesca en Bita Alto y Rio Juriepe",
+      "Transporte 4x4 para desplazamiento",
+    ],
+    includedItems: [
+      "Bote, motor, guia local y guia Mega Pesca",
+      "Alimentacion local por 6 dias",
+      "Hidratacion y snacks por 6 dias",
+      "Transporte 4x4 para desplazamiento",
+      "Poliza de viaje",
     ],
     description: [
       "En el corazon de los Llanos Orientales te espera un escenario donde la naturaleza se muestra sin filtros: vasta, salvaje y absolutamente imponente. Aqui, las llanuras infinitas se funden con rios caudalosos que serpentean entre paisajes virgenes, creando el habitat perfecto para una de las experiencias de pesca mas intensas de Colombia. Cada jornada es un encuentro directo con lo autentico, donde el sonido del agua, el viento y la vida silvestre marcan el ritmo de la aventura.",
@@ -127,6 +134,14 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
       "En Topocoro, cada jornada se convierte en una experiencia que va mucho mas alla de la captura. Llegan pescadores de distintas regiones y paises para competir, conectar, aprender, compartir en comunidad y formar parte de un evento que deja huella dentro y fuera del agua.",
       "Mas que un viaje, Tournament es una experiencia diseñada para quienes quieren estar en el lugar donde sucede lo importante: un escenario imponente, una organizacion cuidada al detalle y una comunidad que entiende la pesca como estilo de vida. Estar aqui no es solo asistir a un torneo; es hacer parte de uno de los momentos mas representativos de la pesca deportiva en Colombia.",
     ],
+    includedItems: [
+      "Transporte desde Rionegro Ant",
+      "Pesca en bote, motor y guia local",
+      "2 desayunos y 2 almuerzos",
+      "Alojamiento 1 noche en acomodacion multiple",
+      "Trofeos y reconocimientos",
+      "Poliza de viaje",
+    ],
     availabilityMessage:
       "Fechas muy solicitadas en temporada activa. Reserva con anticipacion tu salida.",
     reserveButtonLabel: "SEPARAR CUPO",
@@ -158,6 +173,11 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
       "La Liga by Mega Pesca nace como un formato pensado para quienes disfrutan la competencia, la tecnica y la emocion de medirse jornada tras jornada en escenarios que exigen lectura, precision y constancia. No es solo un encuentro de pesca: es una temporada construida para reunir a quienes viven este deporte con mentalidad, disciplina y pasion real.",
       "En el Embalse Penol-Guatape, el Black Bass encuentra el escenario perfecto para jornadas activas, decisiones rapidas y capturas que se ganan lance a lance. Cada fecha mezcla estrategia, comunidad y adrenalina, creando un ambiente donde el nivel sube y cada participante siente que hace parte de algo que vale la pena seguir.",
       "Con dos temporadas y una gran final, La Liga busca consolidarse como una de las citas mas atractivas para la pesca deportiva de Black Bass en Colombia. Es una propuesta para competir, compartir y volver una y otra vez, con el sello de Mega Pesca y una experiencia pensada para dejar huella desde el primer lanzamiento.",
+    ],
+    includedItems: [
+      "Pesca en bote, motor y guia local",
+      "Trofeos y reconocimientos",
+      "Poliza de viaje",
     ],
     availabilityMessage:
       "Inscripciones proximamente para la 3ra edicion 2027.",

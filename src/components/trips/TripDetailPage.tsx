@@ -154,6 +154,11 @@ export default function TripDetailPage({
           </div>
 
           <p className="mt-5 text-[2rem] leading-none text-primary">{badge}</p>
+          <div className="mt-4 inline-flex rounded-full border border-primary/25 bg-primary/10 px-4 py-2 shadow-[0_12px_28px_rgba(214,163,84,0.12)]">
+            <span className="font-serif text-xs uppercase tracking-[0.24em] text-primary">
+              Sello Mega Pesca
+            </span>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[120px_1fr_460px]">
@@ -266,6 +271,11 @@ export default function TripDetailPage({
               </div>
 
               <p className="mt-5 text-2xl text-primary">{badge}</p>
+              <div className="mt-4 inline-flex rounded-full border border-primary/25 bg-primary/10 px-4 py-2 shadow-[0_12px_28px_rgba(214,163,84,0.12)]">
+                <span className="font-serif text-xs uppercase tracking-[0.24em] text-primary">
+                  Sello Mega Pesca
+                </span>
+              </div>
             </div>
 
             <ul className="space-y-2 text-base leading-tight text-muted-foreground sm:mt-5 sm:text-lg">
