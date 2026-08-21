@@ -8,7 +8,8 @@ export type TripSlug =
   | "santo-domingo"
   | "punchina"
   | "jaguas"
-  | "la-miel";
+  | "la-miel"
+  | "playas";
 
 export type TripDestinationItem = {
   slug: TripSlug;
@@ -332,6 +333,42 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
       "/launch/homeriolamiel2.jpg",
       "/launch/homeriolamiel3.jpg",
       "/launch/homeriolamiel4.jpg",
+    ],
+  },
+  playas: {
+    slug: "playas",
+    title: "Playas",
+    location: "San Rafael Antioquia",
+    reviews: 0,
+    ratingValue: 0,
+    statusLabel: "Prontamente",
+    priceCop: 270_000,
+    badge: "Embalse Oriente",
+    highlights: [
+      "1 dia de pesca",
+      "Viaje grupal",
+      "Pesca en embalse",
+      "Capturas de Mojarra, Morrudo, Black Bass y Pavon",
+    ],
+    includedItems: [
+      "Transporte desde Rionegro Ant",
+      "Pesca en bote, motor y guia local",
+      "Desayuno y almuerzo tipo fiambre",
+      "Trofeos y reconocimientos",
+      "Poliza de viaje",
+    ],
+    description: [
+      "Playas es una salida pensada para quienes quieren disfrutar una jornada de pesca en embalse dentro del Oriente Antioqueno, en un entorno de agua abierta, montana y paisajes que invitan a desconectarse y concentrarse por completo en la experiencia.",
+      "En este escenario de San Rafael es posible encontrarse con especies como Mojarra, Morrudo, Black Bass y Pavon, en una experiencia grupal de un dia que combina recorrido en bote, lectura del agua y acompanamiento local. Es una opcion ideal para quienes buscan una salida cercana, dinamica y bien organizada con el sello de Mega Pesca.",
+    ],
+    availabilityMessage:
+      "Proximamente anunciaremos fechas y cupos disponibles.",
+    reserveButtonLabel: "QUIERO MI CUPO",
+    reviewTestimonials: [],
+    images: [
+      "/launch/homeplayas1.jpg",
+      "/launch/homeplayas2.jpg",
+      "/launch/homeplayas3.jpg",
     ],
   },
 };
