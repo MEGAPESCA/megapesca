@@ -157,10 +157,46 @@ export default function TripDetailPage({
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[120px_1fr_460px]">
-          <div className="order-2 flex gap-3 lg:order-1 lg:flex-col">
+          <div className="order-1 min-w-0 lg:order-2">
+            <div className="theme-panel-soft relative overflow-hidden">
+              <div className="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4]">
+                <Image
+                  src={images[activeImage]}
+                  alt={title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+              </div>
+            </div>
+
+            <div className="no-scrollbar mt-4 flex max-w-full gap-3 overflow-x-auto pb-1 lg:hidden">
+              {images.map((img, idx) => (
+                <button
+                  key={`${img}-mobile`}
+                  type="button"
+                  onClick={() => setActiveImage(idx)}
+                  className={`relative h-20 w-20 shrink-0 overflow-hidden rounded-lg border transition ${
+                    activeImage === idx
+                      ? "border-primary shadow-[0_10px_24px_rgba(214,163,84,0.25)]"
+                      : "border-border hover:border-primary/60"
+                  }`}
+                >
+                  <Image
+                    src={img}
+                    alt={`${title} miniatura ${idx + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="order-2 hidden gap-3 lg:order-1 lg:flex lg:flex-col">
             {images.map((img, idx) => (
               <button
-                key={img}
+                key={`${img}-desktop`}
                 type="button"
                 onClick={() => setActiveImage(idx)}
                 className={`relative h-24 w-24 shrink-0 overflow-hidden rounded-lg border transition ${
@@ -177,18 +213,6 @@ export default function TripDetailPage({
                 />
               </button>
             ))}
-          </div>
-
-          <div className="theme-panel-soft order-1 relative overflow-hidden lg:order-2">
-            <div className="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4]">
-              <Image
-                src={images[activeImage]}
-                alt={title}
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
-            </div>
           </div>
 
           <article className="theme-panel order-3 p-6">
