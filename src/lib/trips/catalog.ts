@@ -4,6 +4,8 @@ export type TripSlug =
   | "bahia-solano"
   | "llanos-orientales"
   | "tournament"
+  | "topocoro"
+  | "amani"
   | "la-liga"
   | "santo-domingo"
   | "punchina"
@@ -151,7 +153,82 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
       "/launch/hometournament1.jpg",
       "/launch/hometournament2.jpg",
       "/launch/hometournament3.jpg",
-      "/launch/hometournament4.jpg",
+    ],
+  },
+  topocoro: {
+    slug: "topocoro",
+    title: "Topocoro",
+    location: "Santander",
+    reviews: 0,
+    ratingValue: 0,
+    statusLabel: "Prontamente",
+    priceCop: 680_000,
+    badge: "Embalse",
+    highlights: [
+      "2 dias de pesca",
+      "Viaje grupal",
+      "Pesca en embalse",
+      "Capturas de Peacock Bass",
+    ],
+    includedItems: [
+      "Transporte desde Rionegro Ant",
+      "Pesca en bote, motor y guia local",
+      "2 desayunos y 2 almuerzos tipo fiambre",
+      "Hospedaje multiple 1 noche",
+      "Trofeos y reconocimientos",
+      "Poliza de viaje",
+    ],
+    description: [
+      "Topocoro es una salida pensada para quienes quieren vivir la pesca del Peacock Bass en un embalse rodeado de caños, montañas, cascadas y rios que le dan a cada jornada una atmosfera poderosa y profundamente natural.",
+      "Es un escenario ideal para una experiencia grupal de dos dias de pesca, con recorridos en bote, lectura del agua y un entorno que mezcla tranquilidad, paisaje y ataques explosivos en embalse. Una propuesta perfecta para quienes buscan tecnica, aventura y una conexion real con este destino emblematico de Santander.",
+    ],
+    availabilityMessage:
+      "Proximamente anunciaremos fechas y cupos disponibles.",
+    reserveButtonLabel: "QUIERO MI CUPO",
+    reviewTestimonials: [],
+    images: [
+      "/launch/hometopocoro1.jpg",
+      "/launch/hometopocoro2.jpeg",
+      "/launch/hometopocoro3.jpg",
+      "/launch/hometopocoro4.jpg",
+    ],
+  },
+  amani: {
+    slug: "amani",
+    title: "Amani",
+    location: "Caldas",
+    reviews: 0,
+    ratingValue: 0,
+    statusLabel: "Prontamente",
+    priceCop: 780_000,
+    badge: "Embalse",
+    highlights: [
+      "2 dias de pesca",
+      "Viaje grupal",
+      "Pesca en embalse",
+      "Capturas de Peacock Bass",
+    ],
+    includedItems: [
+      "Transporte desde Rionegro Ant",
+      "Pesca en bote, motor y guia local",
+      "2 desayunos y 2 almuerzos tipo fiambre",
+      "Hospedaje multiple 1 noche",
+      "Trofeos y reconocimientos",
+      "Poliza de viaje",
+    ],
+    description: [
+      "Amani es una salida pensada para quienes quieren vivir la pesca del Peacock Bass en un embalse rodeado de caños, montañas, cascadas y rios que convierten cada jornada en una experiencia intensa y visualmente poderosa.",
+      "Es un destino ideal para una experiencia grupal de dos dias de pesca, con recorridos en bote, lectura del agua y un entorno que mezcla tranquilidad, paisaje y ataques explosivos en embalse. Una propuesta perfecta para quienes buscan aventura, tecnica y una conexion real con la pesca deportiva en Caldas.",
+    ],
+    availabilityMessage:
+      "Proximamente anunciaremos fechas y cupos disponibles.",
+    reserveButtonLabel: "QUIERO MI CUPO",
+    reviewTestimonials: [],
+    images: [
+      "/launch/homeamani1.jpg",
+      "/launch/homeamani2.jpg",
+      "/launch/homeamani3.jpg",
+      "/launch/homeamani4.jpg",
     ],
   },
   "la-liga": {
@@ -221,7 +298,11 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
       "Salida recomendada en temporada de verano. Reserva tu jornada con anticipacion.",
     reserveButtonLabel: "RESERVAR JORNADA",
     reviewTestimonials: [],
-    images: ["/launch/01.jpg", "/launch/04.jpg", "/launch/05.jpg"],
+    images: [
+      "/launch/homesantodomingo2.jpg",
+      "/launch/homesantodomingo3.jpg",
+      "/launch/homesantodomingo4.jpg",
+    ],
   },
   punchina: {
     slug: "punchina",
