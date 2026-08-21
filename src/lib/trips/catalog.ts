@@ -97,9 +97,13 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     reserveButtonLabel: "RESERVAR VIAJE",
     reviewTestimonials: [],
     images: [
+      "/launch/homellanos1.jpg",
       "/launch/homellanos2.jpg",
       "/launch/homellanos3.jpg",
+      "/launch/homellanos4.jpg",
       "/launch/homellanos5.jpg",
+      "/launch/homellanos6.jpeg",
+      "/launch/homellanos7.jpg",
     ],
   },
   tournament: {
