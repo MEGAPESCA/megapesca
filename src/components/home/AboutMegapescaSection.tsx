@@ -10,17 +10,17 @@ const PANELS = [
   {
     title: "Que es Megapesca",
     text: "Megapesca nacio de una conexion profunda con la biodiversidad de Colombia. Queremos que cada pescador deportivo fortalezca su relacion con la naturaleza y promueva el cuidado de las especies, la fauna y la flora de nuestros rios y embalses.",
-    image: "/launch/homellanos3.jpeg",
+    image: "/launch/homemegapescaquees.jpg",
   },
   {
     title: "Comunidad",
     text: "Somos una comunidad de pescadores leales y apasionados por este deporte. Nuestro objetivo es cultivar respeto por la naturaleza y crear espacios de libertad, companerismo y amistad que unan a las personas alrededor de una misma pasion.",
-    image: "/launch/homellanos1.jpeg",
+    image: "/launch/homemegapescacomunidad.jpg",
   },
   {
     title: "Experiencias",
     text: "Megapesca te invita a recorrer Colombia, desde la alta montana hasta los llanos y las costas. Abrimos la puerta a destinos unicos para que vivas jornadas de pesca deportiva en lugares virgenes, autenticos e inolvidables.",
-    image: "/launch/hometopocoro1.jpg",
+    image: "/launch/homemegapescaexperiencias.jpg",
   },
 ];
 

@@ -4,9 +4,10 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const HERO_IMAGES = [
-  "/launch/homebahia1.JPG",
-  "/launch/homellanos1.jpeg",
-  "/launch/hometopocoro1.jpg",
+  "/launch/heroviajes1.jpg",
+  "/launch/heroviajes2.jpg",
+  "/launch/heroviajes3.jpg",
+  "/launch/heroviajes4.jpg",
 ];
 
 function getReserveHref() {

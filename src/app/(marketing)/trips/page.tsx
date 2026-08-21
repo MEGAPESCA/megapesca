@@ -19,6 +19,18 @@ export default function TripsPage() {
 
       <TripsHero />
 
+      <section className="px-4 pb-4 sm:px-6 sm:pb-6 lg:px-8">
+        <div className="mx-auto w-full max-w-7xl">
+          <div className="flex justify-center">
+            <div className="inline-flex items-center rounded-full border border-primary/20 bg-card/70 px-4 py-2 text-center shadow-[0_10px_30px_rgba(15,23,42,0.08)]">
+              <span className="text-[0.68rem] font-medium uppercase tracking-[0.22em] text-muted-foreground sm:text-[0.72rem]">
+                Registro Nacional de Turismo · RNT 172689
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div id="destinos">
         <DestinationsSection destinations={featuredTrips} />
       </div>
