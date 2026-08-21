@@ -153,6 +153,8 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
       "/launch/hometournament1.jpg",
       "/launch/hometournament2.jpg",
       "/launch/hometournament3.jpg",
+      "/launch/hometournament4.jpg",
+      "/launch/hometournament5.jpg",
     ],
   },
   topocoro: {
