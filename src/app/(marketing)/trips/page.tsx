@@ -3,8 +3,10 @@
 import DestinationCard from "@/components/home/DestinationCard";
 import DestinationsSection from "@/components/home/DestinationsSection";
 import MarketingHeader from "@/components/layout/MarketingHeader";
+import CustomTripSection from "@/components/trips/CustomTripSection";
 import TripsHero from "@/components/trips/TripsHero";
 import {
+  getTripDestinations,
   getHomeTripDestinations,
   getSecondaryTripDestinations,
 } from "@/lib/trips/catalog";
@@ -12,6 +14,7 @@ import {
 export default function TripsPage() {
   const featuredTrips = getHomeTripDestinations();
   const upcomingTrips = getSecondaryTripDestinations();
+  const allTrips = getTripDestinations();
 
   return (
     <main className="theme-page min-h-screen">
@@ -88,6 +91,8 @@ export default function TripsPage() {
           )}
         </div>
       </section>
+
+      <CustomTripSection destinations={allTrips} />
     </main>
   );
 }
