@@ -165,12 +165,16 @@ export default function TripDetailPage({
           <div className="order-1 min-w-0 lg:order-2">
             <div className="theme-panel-soft relative overflow-hidden">
               <div className="relative aspect-[4/5] sm:aspect-[4/3] lg:aspect-[3/4]">
-                <Image
-                  src={images[activeImage]}
-                  alt={title}
-                  fill
-                  className="object-cover"
-                />
+                {images.length > 0 ? (
+                  <Image
+                    src={images[activeImage]}
+                    alt={title}
+                    fill
+                    className="object-cover"
+                  />
+                ) : (
+                  <div role="img" aria-label={`Portada visual de ${title}`} className="absolute inset-0 bg-gradient-to-br from-cyan-950 via-slate-900 to-background" />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
               </div>
             </div>

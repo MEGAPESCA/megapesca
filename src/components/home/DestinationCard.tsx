@@ -44,6 +44,14 @@ export default function DestinationCard({ title, images, href }: DestinationCard
           </div>
         ))}
 
+        {images.length === 0 ? (
+          <div
+            role="img"
+            aria-label={`Portada visual de ${title}`}
+            className="absolute inset-0 bg-gradient-to-br from-cyan-950 via-slate-900 to-background"
+          />
+        ) : null}
+
         <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-white/10" />
 
         <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5">

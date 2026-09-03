@@ -11,7 +11,8 @@ export type TripSlug =
   | "punchina"
   | "jaguas"
   | "la-miel"
-  | "playas";
+  | "playas"
+  | "el-gaitero";
 
 export type TripDestinationItem = {
   slug: TripSlug;
@@ -123,6 +124,7 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     isHomeFeatured: true,
     reviews: 7,
     ratingValue: 5,
+    statusLabel: "Disponible",
     priceCop: 750_000,
     badge: "3° Edición 2026",
     highlights: [
@@ -312,7 +314,7 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     location: "Oriente Antioqueno",
     reviews: 0,
     ratingValue: 0,
-    statusLabel: "Disponible",
+    statusLabel: "Prontamente",
     priceCop: 250_000,
     badge: "Embalses Oriente",
     highlights: [
@@ -349,7 +351,7 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     location: "Oriente Antioqueno",
     reviews: 0,
     ratingValue: 0,
-    statusLabel: "Disponible",
+    statusLabel: "Prontamente",
     priceCop: 260_000,
     badge: "Embalses Oriente",
     highlights: [
@@ -386,7 +388,7 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
     location: "Sonson Antioquia",
     reviews: 0,
     ratingValue: 0,
-    statusLabel: "Disponible",
+    statusLabel: "Prontamente",
     priceCop: 680_000,
     badge: "Temporada de verano",
     highlights: [
@@ -454,6 +456,31 @@ const TRIPS_CATALOG: Record<TripSlug, TripCatalogItem> = {
       "/launch/homeplayas3.jpg",
     ],
   },
+  "el-gaitero": {
+    slug: "el-gaitero",
+    title: "El Gaitero",
+    location: "Santa Fe Antioquia",
+    reviews: 0,
+    ratingValue: 0,
+    statusLabel: "Disponible",
+    priceCop: 160_000,
+    badge: "Pesca en lago deportivo",
+    highlights: ["1 dia de pesca", "Viaje grupal", "Pesca en lago"],
+    includedItems: [
+      "Transporte desde Rionegro Ant",
+      "Trofeos y reconocimientos",
+      "Poliza viajera",
+    ],
+    description: [
+      "El Gaitero es una experiencia familiar en el ecoparque de Santa Fe de Antioquia, pensada para disfrutar la pesca en lago deportivo con calma, comodidad y un entorno natural que se adapta muy bien a ninos y adultos.",
+      "En sus aguas es posible encontrar cachamas gigantes, tilapias, doradas y bagres. Es una salida grupal practica y tranquila, ideal para compartir, aprender y vivir una jornada de pesca diferente con el sello de Mega Pesca.",
+    ],
+    availabilityMessage:
+      "Salida disponible. Reserva tu jornada con anticipacion.",
+    reserveButtonLabel: "RESERVAR JORNADA",
+    reviewTestimonials: [],
+    images: [],
+  },
 };
 
 export function getTripHref(slug: TripSlug) {
@@ -485,6 +512,12 @@ export function getHomeTripDestinations(): TripDestinationItem[] {
 export function getSecondaryTripDestinations(): TripDestinationItem[] {
   return Object.values(TRIPS_CATALOG)
     .filter((trip) => trip.isListed !== false && trip.isHomeFeatured !== true)
+    // Santo Domingo is the next active departure, so it leads the secondary trips grid.
+    .sort((firstTrip, secondTrip) => {
+      if (firstTrip.slug === "santo-domingo") return -1;
+      if (secondTrip.slug === "santo-domingo") return 1;
+      return 0;
+    })
     .map((trip) => ({
       slug: trip.slug,
       title: trip.title,
